@@ -4,6 +4,9 @@ import com.cydeo.crm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class Employees_Page {
 
@@ -46,6 +49,16 @@ public class Employees_Page {
 
     @FindBy(xpath = "//a[@title='New Department Test']")
     public WebElement NewDepartmentTest;
+
+    @FindBy(id="IBLOCK_SECTION_ID")
+    public WebElement selectParentDepartment;
+
+    @FindBy(xpath = "//table[@id='bx_str_children_449']//a[.='New Department Test']")
+    public WebElement childDepartment;
+
+    public Select selectParentDepartmentList(){
+        return new Select(selectParentDepartment);
+    }
 
 
 
