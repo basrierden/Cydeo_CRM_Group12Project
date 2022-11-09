@@ -25,10 +25,23 @@ public class EmployeesFunctions_StepDefinitions {
     }
 
 
+    @When("the user leaves Department name empty")
+    public void the_user_leaves_department_name_empty() {
+
+    }
+
+    @Then("the user sees the error message")
+    public void the_user_sees_the_error_message() {
+        String expectedErrorMessage = "Section name is not specified.";
+        String actualErrorMessage = employees_page.errorMessage.getText();
+
+        Assert.assertEquals(expectedErrorMessage, actualErrorMessage);
+    }
+
+
     @When("the user clicks on Add Department button")
     public void the_user_clicks_on_add_department_button() {
         employees_page.addDepartmentButton.click();
-        BrowserUtils.sleep(1);
 
     }
 
@@ -36,19 +49,18 @@ public class EmployeesFunctions_StepDefinitions {
     public void the_user_types_department_name() {
         employees_page.departmentNameInputBox.sendKeys("New Department Test");
 //        BrowserUtils.sleep(1);
-
     }
 
     @When("the user selects supervisor from company")
     public void the_user_selects_supervisor_from_company() {
         employees_page.supervisorSelectFromStructure.click();
-        BrowserUtils.sleep(2);
+//        BrowserUtils.sleep(2);
         employees_page.companyButton.click();
-        BrowserUtils.sleep(5);
+//        BrowserUtils.sleep(5);
         employees_page.CyberVet.click();
-        BrowserUtils.sleep(3);
+//        BrowserUtils.sleep(3);
         employees_page.employeeToBeSupervisorFromCompany.click();
-        BrowserUtils.sleep(5);
+//        BrowserUtils.sleep(5);
 
     }
 
@@ -56,7 +68,7 @@ public class EmployeesFunctions_StepDefinitions {
     @When("the user adds a department")
     public void the_user_adds_a_department() {
         employees_page.addButton.click();
-        BrowserUtils.sleep(1);
+//        BrowserUtils.sleep(1);
     }
 
     @Then("the user sees the added department on the company structure")
@@ -78,7 +90,7 @@ public class EmployeesFunctions_StepDefinitions {
     @When("the user selects a parent department from the department dropdown")
     public void the_user_select_a_parent_department_from_the_department_dropdown() {
         employees_page.selectParentDepartmentList().selectByValue("449");
-        BrowserUtils.sleep(1);
+//        BrowserUtils.sleep(1);
     }
 
     @Then("the user sees the added department under parent department on the company structure")
@@ -99,11 +111,11 @@ public class EmployeesFunctions_StepDefinitions {
     @When("the user selects supervisor from recent")
     public void the_user_select_supervisor_from_recent() {
         employees_page.supervisorSelectFromStructure.click();
-        BrowserUtils.sleep(1);
+//        BrowserUtils.sleep(1);
         employees_page.recentButton.click();
-        BrowserUtils.sleep(1);
+//        BrowserUtils.sleep(1);
         employees_page.employeeToBeSupervisorFromRecent.click();
-        BrowserUtils.sleep(1);
+//        BrowserUtils.sleep(1);
 
     }
 
@@ -114,7 +126,7 @@ public class EmployeesFunctions_StepDefinitions {
         employees_page.searchInputbox.sendKeys(string);
         employees_page.searchResultByName(string).click();
 //        employees_page.employeeToBeSupervisorFromSearch.click();
-        BrowserUtils.sleep(2);
+//        BrowserUtils.sleep(2);
 
     }
 

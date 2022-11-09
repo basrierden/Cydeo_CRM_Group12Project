@@ -1,5 +1,6 @@
+@CRMLYEUG-1476
 Feature:
-  CRMLYEUG-1476
+
   User story: As a user, I should be able to use functions on Company Structure under Employee menu.
 
 
@@ -9,7 +10,6 @@ Feature:
     Given the user logs in as a "<userType>"
     When the user clicks on Employees button on the left menu
     Then the user displays company structure
-
     Examples:
       | userType       |
       | Human Resource |
@@ -17,6 +17,7 @@ Feature:
       | Marketing      |
 
 # AC2. Hr user should be able to add a department from the company structure.
+
 
   Scenario: Hr user add a department from the company structure.
     Given the user logs in as a "Human Resource"
@@ -28,7 +29,16 @@ Feature:
     Then the user sees the added department on the company structure
 
 
+  Scenario: Department cannot be added without department name
+    Given the user logs in as a "Human Resource"
+    When the user clicks on Employees button on the left menu
+    And the user clicks on Add Department button
+    And the user leaves Department name empty
+    And the user adds a department
+    Then the user sees the error message
+
 # AC3. Hr user should be able to select a parent department from the department dropdown.
+
 
   Scenario: Hr user selects a parent department from the department dropdown when adding a department.
     Given the user logs in as a "Human Resource"
@@ -41,6 +51,7 @@ Feature:
 
 # AC4. Hr user should be able to select a supervisor from "recent", "company" and "search"
 
+
   Scenario: Hr user selects a supervisor from "recent" when adding a department.
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu
@@ -49,6 +60,7 @@ Feature:
     And the user selects supervisor from recent
     And the user adds a department
     Then the user sees the added department on the company structure
+
 
   Scenario: Hr user selects a supervisor from "company" when adding a department.
     Given the user logs in as a "Human Resource"
@@ -71,6 +83,7 @@ Feature:
 
 #AC5. Hr user should be able to close add department pop-up at any time before sending
 
+
   Scenario: Hr user can close add department pop-up at any time before sending
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu
@@ -107,6 +120,7 @@ Feature:
     And the user clicks on Close button
     Then add department pop-up is closed
 
+
   Scenario: Hr user can close add department pop-up at any time before sending
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu
@@ -116,7 +130,7 @@ Feature:
     And the user clicks on Close button
     Then add department pop-up is closed
 
-  @WIP
+
   Scenario: Hr user can close add department pop-up at any time before sending
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu

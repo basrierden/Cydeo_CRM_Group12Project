@@ -70,6 +70,9 @@ public class Employees_Page {
     @FindBy(xpath = "//div[@class=\"popup-window-buttons\"]/span[2]")
     public WebElement closeButton;
 
+    @FindBy(xpath = "//div[@class=\"webform-content\"]//li")
+    public WebElement errorMessage;
+
     @FindBy(xpath = "//a[@title='New Department Test']")
     public WebElement NewDepartmentTest;
 
@@ -81,6 +84,8 @@ public class Employees_Page {
 
     @FindBy(xpath = "//a[@title='New Department Test']/../following-sibling::div/div[@data-role='department_delete']")
     public WebElement departmentDelete;
+
+
 
     public Select selectParentDepartmentList() {
         return new Select(selectParentDepartment);
