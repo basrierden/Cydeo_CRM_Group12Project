@@ -1,6 +1,7 @@
 package com.cydeo.crm.pages;
 
 import com.cydeo.crm.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -52,11 +53,22 @@ public class Employees_Page {
     @FindBy(xpath = "(//div[@class='company-department-employee-name'])[1]")
     public WebElement employeeToBeSupervisorFromCompany;
 
+//    @FindBy(id = "Single_ldde0j_user_input")
+    @FindBy(className = "finder-box-search-textbox")
+    public WebElement searchInputbox;
+
+    public WebElement searchResultByName(String name) {
+        return Driver.getDriver().findElement(By.xpath("(//div[.='"+name+"'])[2]"));
+    }
+
     @FindBy(xpath = "//div[@class='finder-box-tab-content finder-box-tab-content-selected']")
     public WebElement employeeToBeSupervisorFromSearch;
 
     @FindBy(xpath = "//span[@class='popup-window-button popup-window-button-accept']")
     public WebElement addButton;
+
+    @FindBy(xpath = "//div[@class=\"popup-window-buttons\"]/span[2]")
+    public WebElement closeButton;
 
     @FindBy(xpath = "//a[@title='New Department Test']")
     public WebElement NewDepartmentTest;
@@ -69,7 +81,6 @@ public class Employees_Page {
 
     @FindBy(xpath = "//a[@title='New Department Test']/../following-sibling::div/div[@data-role='department_delete']")
     public WebElement departmentDelete;
-
 
     public Select selectParentDepartmentList() {
         return new Select(selectParentDepartment);

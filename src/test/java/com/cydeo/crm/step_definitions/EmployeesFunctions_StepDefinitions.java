@@ -42,14 +42,13 @@ public class EmployeesFunctions_StepDefinitions {
     @When("the user select supervisor from company")
     public void the_user_select_supervisor_from_company() {
         employees_page.supervisorSelectFromStructure.click();
-//        BrowserUtils.sleep(1);
+        BrowserUtils.sleep(2);
         employees_page.companyButton.click();
-//        BrowserUtils.sleep(1);
+        BrowserUtils.sleep(5);
         employees_page.CyberVet.click();
-//        BrowserUtils.sleep(1);
+        BrowserUtils.sleep(3);
         employees_page.employeeToBeSupervisorFromCompany.click();
-//        BrowserUtils.sleep(1);
-
+        BrowserUtils.sleep(5);
 
     }
 
@@ -67,9 +66,9 @@ public class EmployeesFunctions_StepDefinitions {
         //delete new department after assertion
         Actions action = new Actions(Driver.getDriver());
         action.moveToElement(employees_page.NewDepartmentTest).perform();
-//        BrowserUtils.sleep(2);
+//        BrowserUtils.sleep(1);
         employees_page.departmentDelete.click();
-//        BrowserUtils.sleep(2);
+//        BrowserUtils.sleep(1);
         Alert alert = Driver.getDriver().switchTo().alert();
         alert.accept();
 //        BrowserUtils.sleep(2);
@@ -106,6 +105,16 @@ public class EmployeesFunctions_StepDefinitions {
         employees_page.employeeToBeSupervisorFromRecent.click();
         BrowserUtils.sleep(1);
 
+    }
+
+    @When("the user search and select supervisor {string} from search")
+    public void the_user_search_and_select_supervisor_from_search(String string) {
+        employees_page.supervisorSelectFromStructure.click();
+        employees_page.searchButton.click();
+        employees_page.searchInputbox.sendKeys(string);
+        employees_page.searchResultByName(string).click();
+//        employees_page.employeeToBeSupervisorFromSearch.click();
+        BrowserUtils.sleep(2);
 
     }
 
