@@ -13,8 +13,8 @@ public class EmployeesFunctions_StepDefinitions {
 
     Employees_Page employees_page = new Employees_Page();
 
-    @When("the user click on Employees button on the left menu")
-    public void the_user_click_on_employees_button_on_the_left_menu() {
+    @When("the user clicks on Employees button on the left menu")
+    public void the_user_clicks_on_employees_button_on_the_left_menu() {
         employees_page.employeesButton.click();
 
     }
@@ -25,8 +25,8 @@ public class EmployeesFunctions_StepDefinitions {
     }
 
 
-    @When("the user click on Add Department button")
-    public void the_user_click_on_add_department_button() {
+    @When("the user clicks on Add Department button")
+    public void the_user_clicks_on_add_department_button() {
         employees_page.addDepartmentButton.click();
         BrowserUtils.sleep(1);
 
@@ -39,8 +39,8 @@ public class EmployeesFunctions_StepDefinitions {
 
     }
 
-    @When("the user select supervisor from company")
-    public void the_user_select_supervisor_from_company() {
+    @When("the user selects supervisor from company")
+    public void the_user_selects_supervisor_from_company() {
         employees_page.supervisorSelectFromStructure.click();
         BrowserUtils.sleep(2);
         employees_page.companyButton.click();
@@ -75,7 +75,7 @@ public class EmployeesFunctions_StepDefinitions {
     }
 
 
-    @When("the user select a parent department from the department dropdown")
+    @When("the user selects a parent department from the department dropdown")
     public void the_user_select_a_parent_department_from_the_department_dropdown() {
         employees_page.selectParentDepartmentList().selectByValue("449");
         BrowserUtils.sleep(1);
@@ -96,7 +96,7 @@ public class EmployeesFunctions_StepDefinitions {
 //        BrowserUtils.sleep(2);
     }
 
-    @When("the user select supervisor from recent")
+    @When("the user selects supervisor from recent")
     public void the_user_select_supervisor_from_recent() {
         employees_page.supervisorSelectFromStructure.click();
         BrowserUtils.sleep(1);
@@ -107,7 +107,7 @@ public class EmployeesFunctions_StepDefinitions {
 
     }
 
-    @When("the user search and select supervisor {string} from search")
+    @When("the user searches and selects supervisor {string} from search")
     public void the_user_search_and_select_supervisor_from_search(String string) {
         employees_page.supervisorSelectFromStructure.click();
         employees_page.searchButton.click();
@@ -115,6 +115,18 @@ public class EmployeesFunctions_StepDefinitions {
         employees_page.searchResultByName(string).click();
 //        employees_page.employeeToBeSupervisorFromSearch.click();
         BrowserUtils.sleep(2);
+
+    }
+
+    @When("the user clicks on Close button")
+    public void the_user_clicks_on_close_button() {
+        employees_page.closeButton.click();
+        BrowserUtils.sleep(2);
+    }
+
+    @Then("add department pop-up is closed")
+    public void add_department_pop_up_is_closed() throws Exception {
+        BrowserUtils.assertWebElementNotPresent(employees_page.addButton);
 
     }
 
