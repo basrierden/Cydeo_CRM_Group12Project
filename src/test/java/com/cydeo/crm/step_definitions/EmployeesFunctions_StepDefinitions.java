@@ -2,9 +2,12 @@ package com.cydeo.crm.step_definitions;
 
 import com.cydeo.crm.pages.Employees_Page;
 import com.cydeo.crm.utilities.BrowserUtils;
+import com.cydeo.crm.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.interactions.Actions;
 
 public class EmployeesFunctions_StepDefinitions {
 
@@ -19,8 +22,6 @@ public class EmployeesFunctions_StepDefinitions {
     @Then("the user displays company structure")
     public void the_user_displays_company_structure() {
         Assert.assertTrue(employees_page.visual_structure.isDisplayed());
-
-
     }
 
 
@@ -38,15 +39,15 @@ public class EmployeesFunctions_StepDefinitions {
 
     }
 
-    @When("the user select supervisor from structure")
-    public void the_user_select_supervisor_from_structure() {
-        employees_page.superviserSelectFromStructure.click();
+    @When("the user select supervisor from company")
+    public void the_user_select_supervisor_from_company() {
+        employees_page.supervisorSelectFromStructure.click();
 //        BrowserUtils.sleep(1);
         employees_page.companyButton.click();
 //        BrowserUtils.sleep(1);
         employees_page.CyberVet.click();
 //        BrowserUtils.sleep(1);
-        employees_page.employeeToBeSuperviser.click();
+        employees_page.employeeToBeSupervisorFromCompany.click();
 //        BrowserUtils.sleep(1);
 
 
@@ -62,6 +63,16 @@ public class EmployeesFunctions_StepDefinitions {
     @Then("the user sees the added department on the company structure")
     public void the_user_sees_the_added_department_on_the_company_structure() {
         Assert.assertTrue(employees_page.NewDepartmentTest.isDisplayed());
+
+        //delete new department after assertion
+        Actions action = new Actions(Driver.getDriver());
+        action.moveToElement(employees_page.NewDepartmentTest).perform();
+//        BrowserUtils.sleep(2);
+        employees_page.departmentDelete.click();
+//        BrowserUtils.sleep(2);
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
+//        BrowserUtils.sleep(2);
     }
 
 
@@ -74,6 +85,28 @@ public class EmployeesFunctions_StepDefinitions {
     @Then("the user sees the added department under parent department on the company structure")
     public void the_user_sees_the_added_department_under_parent_department_on_the_company_structure() {
         Assert.assertTrue(employees_page.childDepartment.isDisplayed());
+
+        //delete new department after assertion
+        Actions action = new Actions(Driver.getDriver());
+        action.moveToElement(employees_page.NewDepartmentTest).perform();
+//        BrowserUtils.sleep(2);
+        employees_page.departmentDelete.click();
+//        BrowserUtils.sleep(2);
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
+//        BrowserUtils.sleep(2);
+    }
+
+    @When("the user select supervisor from recent")
+    public void the_user_select_supervisor_from_recent() {
+        employees_page.supervisorSelectFromStructure.click();
+        BrowserUtils.sleep(1);
+        employees_page.recentButton.click();
+        BrowserUtils.sleep(1);
+        employees_page.employeeToBeSupervisorFromRecent.click();
+        BrowserUtils.sleep(1);
+
+
     }
 
 
