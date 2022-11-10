@@ -1,33 +1,35 @@
 package com.cydeo.crm.utilities;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.util.concurrent.TimeUnit;
 
 public class BrowserUtils {
 
-    public static void sleep(int second){
-        second *=1000;
+    public static void sleep(int second) {
+        second *= 1000;
         try {
             Thread.sleep(second);
-        }catch (InterruptedException e ) {
+        } catch (InterruptedException e) {
 
         }
     }
 
 
-    public static boolean assertWebElementNotPresent(WebElement webElement) throws Exception{
+    public static boolean assertWebElementNotPresent(WebElement webElement) throws Exception {
 
         try {
             Driver.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
             webElement.isDisplayed();
             return false;
-        } catch (Exception ignored) {
+
+        } catch (NoSuchElementException ignored) {
             return true;
         }
+
     }
-
-
 
 
 
