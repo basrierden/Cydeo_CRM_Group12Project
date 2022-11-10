@@ -24,7 +24,6 @@ Feature:
     When the user clicks on Employees button on the left menu
     And the user clicks on Add Department button
     And the user types Department name
-    And the user selects supervisor from company
     And the user adds a department
     Then the user sees the added department on the company structure
 
@@ -139,3 +138,18 @@ Feature:
     And the user searches and selects supervisor "Kara Murat" from search
     And the user clicks on Close button
     Then add department pop-up is closed
+
+#AC6. Hr user should be able to edit departments, add child departments, and delete departments after adding the department.
+  @WIP
+  Scenario: Hr user can edit departments after adding the department.
+    Given the user logs in as a "Human Resource"
+    When the user clicks on Employees button on the left menu
+    And the user clicks on Add Department button
+    And the user types Department name
+    And the user adds a department
+    And the user edits the department
+    Then the department is edited
+
+
+
+

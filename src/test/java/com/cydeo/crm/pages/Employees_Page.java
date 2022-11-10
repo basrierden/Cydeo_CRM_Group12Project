@@ -1,8 +1,10 @@
 package com.cydeo.crm.pages;
 
 import com.cydeo.crm.utilities.Driver;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -76,6 +78,10 @@ public class Employees_Page {
     @FindBy(xpath = "//a[@title='New Department Test']")
     public WebElement NewDepartmentTest;
 
+    public WebElement getDepartmentTitleElement(String departmentName){
+        return Driver.getDriver().findElement(By.xpath("//div[@class=\"structure-dept-title-text\"]/a[@title='"+ departmentName +"']"));
+    }
+
     @FindBy(id = "IBLOCK_SECTION_ID")
     public WebElement selectParentDepartment;
 
@@ -84,6 +90,35 @@ public class Employees_Page {
 
     @FindBy(xpath = "//a[@title='New Department Test']/../following-sibling::div/div[@data-role='department_delete']")
     public WebElement departmentDelete;
+
+
+    public void deleteDepartment(String departmentName){
+        WebElement deleteDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='"+departmentName+"']/../following-sibling::div/div[@data-role='department_delete']"));
+
+        Actions action = new Actions(Driver.getDriver());
+        action.moveToElement(getDepartmentTitleElement(departmentName)).perform();
+        deleteDepartment.click();
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
+    }
+
+    public void editDepartment(String departmentName){
+        WebElement editDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='"+departmentName+"']/../following-sibling::div/div[@data-role='department_edit']"));
+
+        Actions action = new Actions(Driver.getDriver());
+        action.moveToElement(getDepartmentTitleElement(departmentName)).perform();
+        editDepartment.click();
+    }
+
+    public void addDepartment(String departmentName){
+        WebElement addDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='"+departmentName+"']/../following-sibling::div/div[@data-role='department_add']"));
+
+        Actions action = new Actions(Driver.getDriver());
+        action.moveToElement(getDepartmentTitleElement(departmentName)).perform();
+        addDepartment.click();
+    }
+
+
 
 
 

@@ -2,11 +2,13 @@ package com.cydeo.crm.step_definitions;
 
 import com.cydeo.crm.pages.Employees_Page;
 import com.cydeo.crm.utilities.BrowserUtils;
+import com.cydeo.crm.utilities.ConfigurationReader;
 import com.cydeo.crm.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class EmployeesFunctions_StepDefinitions {
@@ -47,7 +49,7 @@ public class EmployeesFunctions_StepDefinitions {
 
     @When("the user types Department name")
     public void the_user_types_department_name() {
-        employees_page.departmentNameInputBox.sendKeys("New Department Test");
+        employees_page.departmentNameInputBox.sendKeys(ConfigurationReader.getProperty("newDepartmentName1"));
 //        BrowserUtils.sleep(1);
     }
 
@@ -73,17 +75,14 @@ public class EmployeesFunctions_StepDefinitions {
 
     @Then("the user sees the added department on the company structure")
     public void the_user_sees_the_added_department_on_the_company_structure() {
-        Assert.assertTrue(employees_page.NewDepartmentTest.isDisplayed());
+
+        WebElement DepartmentTitle = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1"));
+
+        Assert.assertTrue(DepartmentTitle.isDisplayed());
 
         //delete new department after assertion
-        Actions action = new Actions(Driver.getDriver());
-        action.moveToElement(employees_page.NewDepartmentTest).perform();
-//        BrowserUtils.sleep(1);
-        employees_page.departmentDelete.click();
-//        BrowserUtils.sleep(1);
-        Alert alert = Driver.getDriver().switchTo().alert();
-        alert.accept();
-//        BrowserUtils.sleep(2);
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
+
     }
 
 
@@ -98,14 +97,7 @@ public class EmployeesFunctions_StepDefinitions {
         Assert.assertTrue(employees_page.childDepartment.isDisplayed());
 
         //delete new department after assertion
-        Actions action = new Actions(Driver.getDriver());
-        action.moveToElement(employees_page.NewDepartmentTest).perform();
-//        BrowserUtils.sleep(2);
-        employees_page.departmentDelete.click();
-//        BrowserUtils.sleep(2);
-        Alert alert = Driver.getDriver().switchTo().alert();
-        alert.accept();
-//        BrowserUtils.sleep(2);
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
     }
 
     @When("the user selects supervisor from recent")
@@ -142,5 +134,54 @@ public class EmployeesFunctions_StepDefinitions {
 
     }
 
+    @When("the user types Department name {string}")
+    public void the_user_types_department_name(String string) {
+        employees_page.departmentNameInputBox.sendKeys(string);
+    }
+
+    @When("the user edits the department")
+    public void the_user_edits_the_department (){
+
+        employees_page.editDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
+        employees_page.departmentNameInputBox.clear();
+        BrowserUtils.sleep(1);
+        employees_page.departmentNameInputBox.sendKeys(ConfigurationReader.getProperty("newDepartmentName2"));
+        BrowserUtils.sleep(1);
+        employees_page.addButton.click();
+        BrowserUtils.sleep(1);
+    }
+
+
+
+
+    @Then("the department is edited")
+    public void the_department_is_edited() {
+        WebElement editedDepartmentTitle = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName2"));
+
+        Assert.assertTrue(editedDepartmentTitle.isDisplayed());
+
+        BrowserUtils.sleep(1);
+
+        //delete new department after assertion
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
+
+
+    }
+
+
 
 }
+
+
+        /*
+        //delete new department after assertion
+        Actions action = new Actions(Driver.getDriver());
+        action.moveToElement(employees_page.NewDepartmentTest).perform();
+//        BrowserUtils.sleep(1);
+        employees_page.departmentDelete.click();
+//        BrowserUtils.sleep(1);
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
+//        BrowserUtils.sleep(2);
+
+        */
