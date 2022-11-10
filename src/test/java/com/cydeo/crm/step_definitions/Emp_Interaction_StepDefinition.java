@@ -52,5 +52,32 @@ public class Emp_Interaction_StepDefinition {
 
     }
 
+    @When("User click unfollow under any of employee post")
+    public void user_click_unfollow_under_any_of_employee_post() {
+        basePage.get_only_my_posts();
+        basePage.unfollow.click();
+
+    }
+    @Then("unfollow turns to follow")
+    public void unfollow_turns_to_follow() {
+        String actual = basePage.follow.getText();
+        basePage.follow.click();
+        Assert.assertEquals("Unfollow was not clicked","Follow",actual);
+    }
+
+    @When("user click to like of that comment")
+    public void user_click_to_like_of_that_comment() {
+        basePage.likeBtnComment.click();
+    }
+    @Then("like icon appears next to comment")
+    public void like_icon_appears_next_to_comment() {
+        boolean result = basePage.likeBtnCommentParent.getAttribute("class").contains("bx-you-like-button");
+        basePage.delete_comment_from_post();
+        BrowserUtils.sleep(2);
+        Assert.assertTrue("comment could not be liked",result);
+    }
+
+
+
 }
 
