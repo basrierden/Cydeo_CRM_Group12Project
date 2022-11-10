@@ -30,6 +30,9 @@ public class Employees_Page {
     @FindBy(xpath = "//a[@class='webform-small-button webform-small-button-blue webform-small-button-add']")
     public WebElement addDepartmentButton;
 
+    @FindBy(xpath = "//span[@class='popup-window-titlebar-text']")
+    public WebElement addDepartmentPopUpTitle;
+
     @FindBy(xpath = "//input[@id='NAME']")
     public WebElement departmentNameInputBox;
 
@@ -79,7 +82,7 @@ public class Employees_Page {
     public WebElement NewDepartmentTest;
 
     public WebElement getDepartmentTitleElement(String departmentName){
-        return Driver.getDriver().findElement(By.xpath("//div[@class=\"structure-dept-title-text\"]/a[@title='"+ departmentName +"']"));
+        return Driver.getDriver().findElement(By.xpath("//div[@class='structure-dept-title-text']/a[@title='"+ departmentName +"']"));
     }
 
     @FindBy(id = "IBLOCK_SECTION_ID")
@@ -88,8 +91,10 @@ public class Employees_Page {
     @FindBy(xpath = "//table[@id='bx_str_children_449']//a[.='New Department Test']")
     public WebElement childDepartment;
 
-    @FindBy(xpath = "//a[@title='New Department Test']/../following-sibling::div/div[@data-role='department_delete']")
-    public WebElement departmentDelete;
+
+    public WebElement getChildDepartmentElement (String parentID, String childDeptName){
+        return Driver.getDriver().findElement(By.xpath("//table[@id='bx_str_children_"+parentID+"']//a[.='"+childDeptName+"']"));
+    }
 
 
     public void deleteDepartment(String departmentName){
@@ -110,12 +115,22 @@ public class Employees_Page {
         editDepartment.click();
     }
 
-    public void addDepartment(String departmentName){
-        WebElement addDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='"+departmentName+"']/../following-sibling::div/div[@data-role='department_add']"));
+    public void addChildDepartment(String parentDepartmentName){
+        WebElement addChildDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='"+parentDepartmentName+"']/../following-sibling::div/div[@data-role='department_add']"));
 
         Actions action = new Actions(Driver.getDriver());
-        action.moveToElement(getDepartmentTitleElement(departmentName)).perform();
-        addDepartment.click();
+        action.moveToElement(getDepartmentTitleElement(parentDepartmentName)).perform();
+        addChildDepartment.click();
+    }
+
+    public String getDepartmentID(String departmentName){
+
+        WebElement DepTitle = getDepartmentTitleElement(departmentName);
+        String href = DepTitle.getAttribute("href");
+
+        String DepIDNumber = href.substring(href.lastIndexOf('=')+1);
+
+        return DepIDNumber;
     }
 
 

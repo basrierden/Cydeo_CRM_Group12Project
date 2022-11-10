@@ -38,12 +38,17 @@ Feature:
 
 # AC3. Hr user should be able to select a parent department from the department dropdown.
 
-
+  @WIP2
   Scenario: Hr user selects a parent department from the department dropdown when adding a department.
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu
+
     And the user clicks on Add Department button
     And the user types Department name
+    And the user adds a department
+
+    And the user clicks on Add Department button
+    And the user types child Department name
     And the user selects a parent department from the department dropdown
     And the user adds a department
     Then the user sees the added department under parent department on the company structure
@@ -65,7 +70,7 @@ Feature:
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu
     And the user clicks on Add Department button
-    And the user types Department name
+    And the user types child Department name
     And the user selects supervisor from company
     And the user adds a department
     Then the user sees the added department on the company structure
@@ -140,7 +145,7 @@ Feature:
     Then add department pop-up is closed
 
 #AC6. Hr user should be able to edit departments, add child departments, and delete departments after adding the department.
-  @WIP
+
   Scenario: Hr user can edit departments after adding the department.
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu
@@ -151,5 +156,24 @@ Feature:
     Then the department is edited
 
 
+  Scenario: Hr user can add child departments after adding the department.
+    Given the user logs in as a "Human Resource"
+    When the user clicks on Employees button on the left menu
+    And the user clicks on Add Department button
+    And the user types Department name
+    And the user adds a department
+    And the user adds child department
+    Then the user sees the added department under parent department on the company structure
+
+
+  @WIP
+  Scenario: Hr user can add child departments after adding the department.
+    Given the user logs in as a "Human Resource"
+    When the user clicks on Employees button on the left menu
+    And the user clicks on Add Department button
+    And the user types Department name
+    And the user adds a department
+    And the user deletes the department
+    Then the department is deleted
 
 
