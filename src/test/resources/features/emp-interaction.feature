@@ -4,39 +4,57 @@ Feature: CRM24 employee interaction feature
 
   Accounts are: Human Resource, Helpdesk, and Marketing
 
-  @login
-  Scenario Outline:
-    Given the user logs in as a "<userType>"
-    Examples:
-      | userType       |
-      | Human Resource |
-      | Helpdesk       |
-      | Marketing      |
+
 
 
        #CRMLYEUG-1278
-  Scenario: Verify user should be able to make a comment to other employees' posts.
-    Given the user logs in as a hr
-    When user write a "This is a test comment" to any post
+
+  Scenario Outline: Verify user should be able to make a comment to other employees' posts.
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
     And click send button
     Then "This is a test comment" appear under the post
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
+
 
    #CRMLYEUG-1280
-
- # Scenario: Verify user should be able to make a like to other employees' posts.
-  #  When user click like button any of employees post
-  #  Then you was written under the post
+  Scenario Outline: Verify user should be able to make a like to other employees' posts.
+    Given the user logs in as a "<userType>"
+    When user click like button any of employees post
+    Then you was written under the post
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
 
     #CRMLYEUG-1281
-
- # Scenario: Verify user should be able to unfollow other employees' posts.
-   # When User click unfollow under any of employee post
-   # Then unfollow turns to follow
+  Scenario Outline: Verify user should be able to unfollow other employees' posts.
+    Given the user logs in as a "<userType>"
+    When User click unfollow under any of employee post
+    Then unfollow turns to follow
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
 
     #CRMLYEUG-1282
- # Scenario: Verify user should be able to make a like on all other reviewers' comments.
-  #  When user click to like of any reviewers comment
-   # Then like icon appears next to comment
+  Scenario Outline: Verify user should be able to make a like on all other reviewers' comments.
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
+    And click send button
+    And user click to like of that comment
+    Then like icon appears next to comment
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
 
     #CRMLYEUG-1283
 

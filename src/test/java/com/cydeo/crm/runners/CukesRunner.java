@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
 
         plugin = {
-                //"pretty",
                 "json:target/cucumber.json",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber",
                 "html:target/cucumber-report.html",
@@ -18,7 +17,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/cydeo/crm/step_definitions",
         dryRun = false,
-        tags = "@WIP",
+        tags = "",
         publish = false
 )
 
