@@ -58,6 +58,9 @@ public class Employees_Page {
     @FindBy(xpath = "(//div[@class='company-department-employee-name'])[1]")
     public WebElement employeeToBeSupervisorFromCompany;
 
+    @FindBy(xpath = "//span[@class='structure-undo-close']")
+    public WebElement structureUndoClose;
+
 //    @FindBy(id = "Single_ldde0j_user_input")
     @FindBy(className = "finder-box-search-textbox")
     public WebElement searchInputbox;

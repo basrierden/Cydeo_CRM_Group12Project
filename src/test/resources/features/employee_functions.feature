@@ -166,8 +166,7 @@ Feature:
     Then the user sees the added department under parent department on the company structure
 
 
-  @WIP
-  Scenario: Hr user can add child departments after adding the department.
+  Scenario: Hr user can delete departments after adding the department.
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu
     And the user clicks on Add Department button
@@ -175,5 +174,32 @@ Feature:
     And the user adds a department
     And the user deletes the department
     Then the department is deleted
+
+
+#AC7. Hr user should be able to drag and drop the existing department under another department as a subdepartment.
+
+  Scenario: Hr user can drag and drop the existing department under another department as a subdepartment.
+    Given the user logs in as a "Human Resource"
+    When the user clicks on Employees button on the left menu
+    And the user clicks on Add Department button
+    And the user types Department name
+    And the user adds a department
+    And the user clicks on Add Department button
+    And the user types second Department name
+    And the user adds a department
+    And the user drag and drop the first department under second department as a subdepartment
+    Then the user sees the added department under parent department on the company structure
+
+
+#AC8. Helpdesk and marketing users can not change company structure.
+@WIP
+  Scenario Outline: Helpdesk and marketing users can not change company structure.
+    Given the user logs in as a "<userType>"
+    When the user clicks on Employees button on the left menu
+    Then the user cannot see Add Department button
+    Examples:
+      | userType  |
+      | Helpdesk  |
+      | Marketing |
 
 
