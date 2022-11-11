@@ -54,6 +54,13 @@ public class EmployeesFunctions_StepDefinitions {
 //        BrowserUtils.sleep(1);
     }
 
+    @When("the user types second Department name")
+    public void the_user_types_second_department_name() {
+        employees_page.departmentNameInputBox.sendKeys(ConfigurationReader.getProperty("newDepartmentName2"));
+//       BrowserUtils.sleep(1);
+    }
+
+
     @When("the user selects supervisor from company")
     public void the_user_selects_supervisor_from_company() {
         employees_page.supervisorSelectFromStructure.click();
@@ -69,6 +76,7 @@ public class EmployeesFunctions_StepDefinitions {
 
     @When("the user adds a department")
     public void the_user_adds_a_department() {
+        BrowserUtils.sleep(1);
         employees_page.addButton.click();
 
     }
@@ -106,9 +114,12 @@ public class EmployeesFunctions_StepDefinitions {
         Assert.assertTrue(childDept.isDisplayed());
 
         //delete new department after assertion
-      employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
 
-      employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
+        BrowserUtils.sleep(2);
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
+
+        BrowserUtils.sleep(2);
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
     }
 
 
@@ -193,16 +204,41 @@ public class EmployeesFunctions_StepDefinitions {
     @When("the user deletes the department")
     public void the_user_deletes_the_department() {
         BrowserUtils.sleep(1);
+
         employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
+
+        BrowserUtils.sleep(5);
     }
+
     @Then("the department is deleted")
     public void the_department_is_deleted() throws Exception {
 
-        //WIP
-//        boolean departmentNotPresent = BrowserUtils.assertWebElementNotPresent(employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1")));
+        boolean departmentPresent = Driver.getDriver().getPageSource().contains(ConfigurationReader.getProperty("newDepartmentName1"));
 
-//        System.out.println("departmentNotPresent = " + departmentNotPresent);
-//        Assert.assertTrue(departmentNotPresent);
+        Assert.assertFalse(departmentPresent);
+
+    }
+
+    @When("the user drag and drop the first department under second department as a subdepartment")
+    public void the_user_drag_and_drop_the_first_department_under_second_department_as_a_subdepartment() {
+
+        BrowserUtils.sleep(1);
+        Actions action = new Actions(Driver.getDriver());
+        WebElement Dept1 = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1"));
+        WebElement Dept2 = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName2"));
+
+        action.dragAndDrop(Dept2, Dept1).perform();
+
+        employees_page.structureUndoClose.click();
+
+    }
+
+    @Then("the user cannot see Add Department button")
+    public void the_user_cannot_see_add_department_button() {
+
+        boolean departmentPresent = Driver.getDriver().getPageSource().contains("Add department");
+
+        Assert.assertFalse(departmentPresent);
 
     }
 

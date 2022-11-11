@@ -43,7 +43,6 @@ Feature: CRM24 employee interaction feature
       | Helpdesk_kenan       |
       | Marketing_kenan      |
 
-  @wip
     #CRMLYEUG-1282
   Scenario Outline: Verify user should be able to make a like on all other reviewers' comments.
     Given the user logs in as a "<userType>"
