@@ -18,6 +18,9 @@ public class ActivityStream_Page {
     @FindBy(id = "feed-add-post-form-tab-calendar")
     public WebElement eventButton;
 
+    @FindBy(xpath = "//input[@id='event-locationcal_3Jcl']")
+    public WebElement selectMeetingRoom;
+
     @FindBy(id = "bxecmr_1")
     public WebElement eastMeetingRoom;
 
