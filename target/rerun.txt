@@ -1,4 +1,1 @@
-<<<<<<< HEAD
-file:src/test/resources/features/emp-interaction.feature:33:34
-=======
->>>>>>> f75efcb197aa8502359f6e1d090cac5a47f44187
+file:src/test/resources/features/emp-interaction.feature:57:58

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Base_Page {
 
-    public Base_Page(){
+    public Base_Page() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -35,8 +35,7 @@ public class Base_Page {
     @FindBy(xpath = "//div[@class='feed-com-informers-bottom']/a/span")
     public WebElement moreBtn_comment;
 
-    @FindBy(xpath = "//div[@style='z-index: 1000; position: absolute; display: block; top: 217px; left: 404px;']" +
-            "/div/div/div/span[.='Delete']")
+    @FindBy(xpath = "//span[@class='menu-popup-item blog-comment-popup-menu ']/span[.='Delete']")
     public WebElement deleteBtn_comment;
 
     @FindBy(xpath = "//a[.='Like']")
@@ -45,25 +44,36 @@ public class Base_Page {
     @FindBy(xpath = "//div[.='You']")
     public WebElement youLiked;
 
+    @FindBy(xpath = "//a[.='Unfollow']")
+    public WebElement unfollow;
+
+    @FindBy(xpath = "//a[.='Follow']")
+    public WebElement follow;
+
+    @FindBy(xpath = "//div[@class='feed-com-informers-bottom']/span/span/a")
+    public WebElement likeBtnComment;
+
+    @FindBy(xpath = "//div[@class='feed-com-informers-bottom']/span/span")
+    public WebElement likeBtnCommentParent;
+
+    @FindBy(xpath = "//div[@class='feed-post-emoji-text-item bx-ilike-right']")
+    public WebElement likeIconComment;
 
 
 
 
-    public void get_only_my_posts(){
+    public void get_only_my_posts() {
         searchBox.click();
         BrowserUtils.sleep(2);
         myActivity.click();
         BrowserUtils.sleep(2);
     }
-    public void delete_comment_from_post(){
+
+    public void delete_comment_from_post() {
         moreBtn_comment.click();
         deleteBtn_comment.click();
         Driver.getDriver().switchTo().alert().accept();
     }
-
-
-
-
 
 
 }
