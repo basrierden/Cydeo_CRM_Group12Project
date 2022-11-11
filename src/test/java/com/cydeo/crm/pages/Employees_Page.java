@@ -39,7 +39,6 @@ public class Employees_Page {
     @FindBy(id = "single-user-choice")
     public WebElement supervisorSelectFromStructure;
 
-
     @FindBy(xpath = "(//span[@class='finder-box-tab-text'])[1]")
     public WebElement recentButton;
 
@@ -61,12 +60,11 @@ public class Employees_Page {
     @FindBy(xpath = "//span[@class='structure-undo-close']")
     public WebElement structureUndoClose;
 
-//    @FindBy(id = "Single_ldde0j_user_input")
     @FindBy(className = "finder-box-search-textbox")
     public WebElement searchInputbox;
 
     public WebElement searchResultByName(String name) {
-        return Driver.getDriver().findElement(By.xpath("(//div[.='"+name+"'])[2]"));
+        return Driver.getDriver().findElement(By.xpath("(//div[.='" + name + "'])[2]"));
     }
 
     @FindBy(xpath = "//div[@class='finder-box-tab-content finder-box-tab-content-selected']")
@@ -84,8 +82,8 @@ public class Employees_Page {
     @FindBy(xpath = "//a[@title='New Department Test']")
     public WebElement NewDepartmentTest;
 
-    public WebElement getDepartmentTitleElement(String departmentName){
-        return Driver.getDriver().findElement(By.xpath("//div[@class='structure-dept-title-text']/a[@title='"+ departmentName +"']"));
+    public WebElement getDepartmentTitleElement(String departmentName) {
+        return Driver.getDriver().findElement(By.xpath("//div[@class='structure-dept-title-text']/a[@title='" + departmentName + "']"));
     }
 
     @FindBy(id = "IBLOCK_SECTION_ID")
@@ -95,14 +93,12 @@ public class Employees_Page {
     public WebElement childDepartment;
 
 
-    public WebElement getChildDepartmentElement (String parentID, String childDeptName){
-        return Driver.getDriver().findElement(By.xpath("//table[@id='bx_str_children_"+parentID+"']//a[.='"+childDeptName+"']"));
+    public WebElement getChildDepartmentElement(String parentID, String childDeptName) {
+        return Driver.getDriver().findElement(By.xpath("//table[@id='bx_str_children_" + parentID + "']//a[.='" + childDeptName + "']"));
     }
 
-
-    public void deleteDepartment(String departmentName){
-        WebElement deleteDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='"+departmentName+"']/../following-sibling::div/div[@data-role='department_delete']"));
-
+    public void deleteDepartment(String departmentName) {
+        WebElement deleteDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='" + departmentName + "']/../following-sibling::div/div[@data-role='department_delete']"));
         Actions action = new Actions(Driver.getDriver());
         action.moveToElement(getDepartmentTitleElement(departmentName)).perform();
         deleteDepartment.click();
@@ -110,42 +106,31 @@ public class Employees_Page {
         alert.accept();
     }
 
-    public void editDepartment(String departmentName){
-        WebElement editDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='"+departmentName+"']/../following-sibling::div/div[@data-role='department_edit']"));
-
+    public void editDepartment(String departmentName) {
+        WebElement editDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='" + departmentName + "']/../following-sibling::div/div[@data-role='department_edit']"));
         Actions action = new Actions(Driver.getDriver());
         action.moveToElement(getDepartmentTitleElement(departmentName)).perform();
         editDepartment.click();
     }
 
-    public void addChildDepartment(String parentDepartmentName){
-        WebElement addChildDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='"+parentDepartmentName+"']/../following-sibling::div/div[@data-role='department_add']"));
-
+    public void addChildDepartment(String parentDepartmentName) {
+        WebElement addChildDepartment = Driver.getDriver().findElement(By.xpath("//a[@title='" + parentDepartmentName + "']/../following-sibling::div/div[@data-role='department_add']"));
         Actions action = new Actions(Driver.getDriver());
         action.moveToElement(getDepartmentTitleElement(parentDepartmentName)).perform();
         addChildDepartment.click();
     }
 
-    public String getDepartmentID(String departmentName){
-
+    public String getDepartmentID(String departmentName) {
         WebElement DepTitle = getDepartmentTitleElement(departmentName);
         String href = DepTitle.getAttribute("href");
-
-        String DepIDNumber = href.substring(href.lastIndexOf('=')+1);
-
+        String DepIDNumber = href.substring(href.lastIndexOf('=') + 1);
         return DepIDNumber;
     }
-
-
-
 
 
     public Select selectParentDepartmentList() {
         return new Select(selectParentDepartment);
     }
-
-
-//    (//div[@class="finder-box-item-text"])[1]
 
 
 }
