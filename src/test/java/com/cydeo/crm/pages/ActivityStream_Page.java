@@ -114,6 +114,16 @@ public class ActivityStream_Page {
     @FindBy(id = "event-remind_countcal_3Jcl")
     public WebElement reminderCount;
 
+    @FindBy(xpath = "(//span[@class='calendar-item-date'])[1]")
+    public WebElement upcomingEvents;
+
+    @FindBy(xpath = "//div[.='Reminder:']")
+    public WebElement reminderLabelProof;
+
+    @FindBy(xpath = "//select[@id='event-remind_typecal_3Jcl']")
+    public WebElement minHourDaySelect;
+
+
 
 
 

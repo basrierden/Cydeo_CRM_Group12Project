@@ -87,6 +87,30 @@ public class Event_StepDefinitions {
         Assert.assertTrue(activityStreamPage.eventProof.isDisplayed());
     }
 
+    @When("user set reminder and send Event")
+    public void user_set_reminder_and_send_event() {
+        activityStreamPage.reminderCount.clear();
+        BrowserUtils.sleep(2);
+        activityStreamPage.reminderCount.sendKeys("2");
+        BrowserUtils.sleep(2);
+        Select selectMinHourDay = new Select(activityStreamPage.minHourDaySelect);
+        BrowserUtils.sleep(2);
+        selectMinHourDay.selectByValue("day");
+        BrowserUtils.sleep(2);
+        activityStreamPage.sendEventBtn.click();
+    }
+    @When("user clicks on Upcoming Events")
+    public void user_clicks_on_upcoming_events() {
+        BrowserUtils.sleep(5);
+        activityStreamPage.upcomingEvents.click();
+        BrowserUtils.sleep(5);
+    }
+    @Then("user is able to see Remainder label")
+    public void user_is_able_to_see_remainder_label() {
+        Assert.assertTrue(activityStreamPage.reminderLabelProof.isDisplayed());
+    }
+
+
 
 
 }
