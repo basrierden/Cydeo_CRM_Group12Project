@@ -106,9 +106,9 @@ public class EmployeesFunctions_StepDefinitions {
         Assert.assertTrue(childDept.isDisplayed());
 
         //delete new department after assertion
-      employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
 
-      employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
     }
 
 
@@ -193,16 +193,18 @@ public class EmployeesFunctions_StepDefinitions {
     @When("the user deletes the department")
     public void the_user_deletes_the_department() {
         BrowserUtils.sleep(1);
+
         employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
+
+        BrowserUtils.sleep(5);
     }
+
     @Then("the department is deleted")
     public void the_department_is_deleted() throws Exception {
 
-        //WIP
-//        boolean departmentNotPresent = BrowserUtils.assertWebElementNotPresent(employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1")));
+        boolean departmentPresent = Driver.getDriver().getPageSource().contains(ConfigurationReader.getProperty("newDepartmentName1"));
 
-//        System.out.println("departmentNotPresent = " + departmentNotPresent);
-//        Assert.assertTrue(departmentNotPresent);
+        Assert.assertFalse(departmentPresent);
 
     }
 
