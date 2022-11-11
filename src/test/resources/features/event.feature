@@ -19,7 +19,6 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-  @wip_Damir
   Scenario Outline: User should be able to set reminder.
     Given the user logs in as a "<userType>"
     When user clicks on Event button
@@ -36,6 +35,9 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
   @wip_Damir
   Scenario Outline: User should be able to select the event location from the dropdown.
     Given the user logs in as a "<userType>"
+    When user clicks on Event button
+    And user select location for event
+    Then user should see selected location
 
     Examples:
       | userType       |

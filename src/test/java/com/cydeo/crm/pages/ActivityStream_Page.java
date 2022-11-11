@@ -21,8 +21,11 @@ public class ActivityStream_Page {
     @FindBy(xpath = "//input[@id='event-locationcal_3Jcl']")
     public WebElement selectMeetingRoom;
 
-    @FindBy(id = "bxecmr_1")
-    public WebElement eastMeetingRoom;
+    @FindBy(id = "bxecmr_2")
+    public WebElement westMeetingRoom;
+
+    @FindBy(xpath = "(//tr/td[.='West Meeting Room'])[1]")
+    public WebElement meetingRoomProof;
 
     @FindBy(xpath = "//input[@id='event-full-daycal_3Jcl']")
     public WebElement allDayCheckbox;

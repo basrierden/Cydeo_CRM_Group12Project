@@ -101,13 +101,27 @@ public class Event_StepDefinitions {
     }
     @When("user clicks on Upcoming Events")
     public void user_clicks_on_upcoming_events() {
-        BrowserUtils.sleep(5);
+        BrowserUtils.sleep(3);
         activityStreamPage.upcomingEvents.click();
         BrowserUtils.sleep(5);
     }
     @Then("user is able to see Remainder label")
     public void user_is_able_to_see_remainder_label() {
         Assert.assertTrue(activityStreamPage.reminderLabelProof.isDisplayed());
+    }
+
+    @When("user select location for event")
+    public void user_select_location_for_event() {
+        activityStreamPage.selectMeetingRoom.click();
+        activityStreamPage.westMeetingRoom.click();
+        BrowserUtils.sleep(2);
+        activityStreamPage.sendEventBtn.click();
+
+    }
+    @Then("user should see selected location")
+    public void user_should_see_selected_location() {
+        BrowserUtils.sleep(3);
+        Assert.assertEquals("West Meeting Room", activityStreamPage.meetingRoomProof.getText());
     }
 
 
