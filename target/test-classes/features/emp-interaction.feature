@@ -43,7 +43,6 @@ Feature: CRM24 employee interaction feature
       | Helpdesk_kenan       |
       | Marketing_kenan      |
 
-  @wip
     #CRMLYEUG-1282
   Scenario Outline: Verify user should be able to make a like on all other reviewers' comments.
     Given the user logs in as a "<userType>"
@@ -59,11 +58,19 @@ Feature: CRM24 employee interaction feature
 
     #CRMLYEUG-1283
 
-#  Scenario: Verify user should be able to make a comment on all other reviewers' comments.
- #   When user click on reply under the comment of any user
-  #  And write something to comment part
-  #  And click send button
-  #  Then message appears under the post with the name of receiver
+  Scenario Outline: Verify user should be able to make a comment on all other reviewers' comments.
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
+    And click send button
+    And user click on reply under the comment
+    And write something to comment part
+    And click send button
+    Then message appears under the post with the name of receiver
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
 
 #    #CRMLYEUG-1284
 #  Scenario: Verify user should be able to like his/her comment
@@ -79,48 +86,80 @@ Feature: CRM24 employee interaction feature
 #    And click send button
 #    Then comment appear under the post
 #
-#    #CRMLYEUG-1286
-#  Scenario: Verify after making a comment user should be able to view comment by clicking more
-#    When user write a comment to any post
-#    And click send button
-#    And click more under the comment he/she wrote
-#    And click view comment
-#    Then user will be directed to new page where post owner name on the header
-#
-#    #CRMLYEUG-1287
-#  Scenario: Verify after making a comment user should be able to copy link by clicking more
-#    When user write a comment to any post
-#    And click send button
-#    And click more under the comment he/she wrote
-#    And click copy link
-#    Then done icon appears next to copy link and link was copied accordingly
-#
+
+    #CRMLYEUG-1286
+  Scenario Outline: Verify after making a comment user should be able to view comment by clicking more
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
+    And click send button
+    And click more under the comment was written
+    And click view comment
+    Then user will be directed to new page where page title is Conversations
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
+
+    #CRMLYEUG-1287
+  Scenario Outline: Verify after making a comment user should be able to copy link by clicking more
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
+    And click send button
+    And click more under the comment was written
+    And click copy link
+    Then done icon appears next to copy link and link was copied accordingly
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
+
+
 #    #CRMLYEUG-1288
-#  Scenario: Verify after making a comment user should be able to edit comment by clicking more
-#    When user write a comment to any post
-#    And click send button
-#    And click more under the comment he/she wrote
-#    And click edit button
-#    And edit the comment
-#    And click send button
-#    Then previous comment changes to edited one
-#
+  Scenario Outline: Verify after making a comment user should be able to edit comment by clicking more
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
+    And click send button
+    And click more under the comment was written
+    And click edit button
+    And write "text was edited" the comment
+    And click send button
+    Then updated comment contains to "text was edited"
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
+
 #    #CRMLYEUG-1289
-#  Scenario: Verify after making a comment user should be able to delete comment by clicking more
-#    When user write a comment to any post
-#    And click send button
-#    And click more under the comment he/she wrote
-#    And click delete button and click OK
-#    Then comment deletes and Comment deleted alert appears on the screen
-#
+  Scenario Outline: Verify after making a comment user should be able to delete comment by clicking more
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
+    And click send button
+    And click more under the comment was written
+    And click delete button and click OK
+    Then comment deletes and Comment deleted alert appears on the screen
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
+  @wip
 #    #CRMLYEUG-1290
-#  Scenario:
-#    When user write a comment to any post
-#    And click send button
-#    And click more under the comment he/she wrote
-#    And click create task button
-#    Then task has been created alert should appear
-#    Then task should be created with the comment header
+  Scenario Outline: Verify after making a comment user should be able to create task by clicking more.
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
+    And click send button
+    And click more under the comment was written
+    And click create task button
+    Then "task has been created" alert should appear
+    Then task should be created with the "This is a test comment" comment header
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
 #
 #    #CRMLYEUG-1291
 #  Scenario: Verify user see the reviewers' name

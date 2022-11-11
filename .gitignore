@@ -1,3 +1,7 @@
+/target/
+*/target/**
+**/META-INF/
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

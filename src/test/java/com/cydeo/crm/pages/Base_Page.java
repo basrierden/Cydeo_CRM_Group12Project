@@ -33,7 +33,9 @@ public class Base_Page {
     public WebElement comment;
 
     @FindBy(xpath = "//div[@class='feed-com-informers-bottom']/a/span")
-    public WebElement moreBtn_comment;
+    public List<WebElement> moreBtn_comment;
+
+
 
     @FindBy(xpath = "//span[@class='menu-popup-item blog-comment-popup-menu ']/span[.='Delete']")
     public WebElement deleteBtn_comment;
@@ -59,10 +61,49 @@ public class Base_Page {
     @FindBy(xpath = "//div[@class='feed-post-emoji-text-item bx-ilike-right']")
     public WebElement likeIconComment;
 
+    @FindBy(xpath = "//div[@class='feed-com-informers-bottom']/a[1]")
+    public WebElement replyToComment;
+
+    @FindBy(xpath = "//div[@class='feed-com-text-inner-inner']")
+    public List<WebElement>  allComments;
+
+    @FindBy(xpath = "//span[.='View comment']")
+    public WebElement viewComment;
+
+    @FindBy(id="pagetitle")
+    public WebElement pageTitle;
+
+    @FindBy(xpath = "//span[@class='menu-popup-item-text']/span[.='Copy link']")
+    public WebElement copyLink;
+
+    @FindBy(xpath = "//span[@class='menu-popup-item blog-comment-popup-menu ']/span[.='Edit']")
+    public WebElement editBtn;
+
+    @FindBy(xpath = "//span[.='Comment deleted']")
+    public WebElement commentDeleted;
+
+    @FindBy(xpath = "//span[@class='menu-popup-item blog-comment-popup-menu ']/span[.='Create task']")
+    public  WebElement createTask;
+
+    @FindBy(xpath = "//div[.='Task has been created']")
+    public WebElement taskCreatedAlert;
+
+    @FindBy(xpath = "//span[.='View']")
+    public WebElement taskView;
+
+    @FindBy(id = "pagetitle")
+    public WebElement taskPageTitle;
+
+    @FindBy(xpath = "//span[@class='side-panel-close-inner']")
+    public WebElement taskPageClose;
+
+
+
 
 
 
     public void get_only_my_posts() {
+        BrowserUtils.sleep(3);
         searchBox.click();
         BrowserUtils.sleep(2);
         myActivity.click();
@@ -70,9 +111,12 @@ public class Base_Page {
     }
 
     public void delete_comment_from_post() {
-        moreBtn_comment.click();
-        deleteBtn_comment.click();
-        Driver.getDriver().switchTo().alert().accept();
+        for (WebElement btn : moreBtn_comment) {
+            btn.click();
+            deleteBtn_comment.click();
+            Driver.getDriver().switchTo().alert().accept();
+        }
+
     }
 
 
