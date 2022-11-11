@@ -32,3 +32,13 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Human Resource |
       | Helpdesk       |
       | Marketing      |
+
+  @wip_Damir
+  Scenario Outline: User should be able to select the event location from the dropdown.
+    Given the user logs in as a "<userType>"
+
+    Examples:
+      | userType       |
+      | Human Resource |
+      | Helpdesk       |
+      | Marketing      |
