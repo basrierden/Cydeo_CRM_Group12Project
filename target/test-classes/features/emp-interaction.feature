@@ -145,7 +145,7 @@ Feature: CRM24 employee interaction feature
       | Human Resource_kenan |
       | Helpdesk_kenan       |
       | Marketing_kenan      |
-  @wip
+
 #    #CRMLYEUG-1290
   Scenario Outline: Verify after making a comment user should be able to create task by clicking more.
     Given the user logs in as a "<userType>"
@@ -154,34 +154,57 @@ Feature: CRM24 employee interaction feature
     And click more under the comment was written
     And click create task button
     Then "task has been created" alert should appear
-    Then task should be created with the "This is a test comment" comment header
     Examples:
       | userType             |
       | Human Resource_kenan |
       | Helpdesk_kenan       |
       | Marketing_kenan      |
-#
+
 #    #CRMLYEUG-1291
-#  Scenario: Verify user see the reviewers' name
-#    When user go to any post
-#    Then reviewers' seen under the post
-#
+  Scenario Outline: Verify user see the reviewers' name
+    Given the user logs in as a "<userType>"
+    When user go to any post
+    Then reviewers' seen under the post
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
+
 #    #CRMLYEUG-1292
-#  Scenario: Verify user visit the reviewers' profile by clicking on their name
-#    When user go to any post and click one of reviewer name
-#    Then user is on the reviewer profile page
-#
+  Scenario Outline: Verify user visit the reviewers' profile by clicking on their name
+    Given the user logs in as a "<userType>"
+    When user go to any post and click one of reviewer name
+    Then user is on the reviewer profile page
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
+
 #    #CRMLYEUG-1293
-#  Scenario: Verify user add others' posts to favorites by clicking on the Star icon
-#    When user click star icon on right top of any post
-#    And click filter and search input next to activity stream
-#    And click favorites
-#    Then favorite tag was added to search box and user see only favorite selected posts
-#
-#    #CRMLYEUG-1295
-#  Scenario: Verify after making a comment user should not be able to delete comment by clicking cancel in alert
-#    When user write a comment to any post
-#    And click send button
-#    And click more under the comment he/she wrote
-#    And click delete button and click cancel
-#    Then comment should not be deleted from post
+  Scenario Outline: Verify user add others' posts to favorites by clicking on the Star icon
+    Given the user logs in as a "<userType>"
+    When user click star icon on right top of any post
+    And click filter and search input next to activity stream
+    And click favorites
+    Then favorite tag was added to search box and user see only favorite selected posts
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |
+
+   #CRMLYEUG-1295
+  Scenario Outline: Verify after making a comment user should not be able to delete comment by clicking cancel in alert
+    Given the user logs in as a "<userType>"
+    When user write a "This is a test comment" to post
+    And click send button
+    And click more under the comment was written
+    And click delete button and click cancel
+    Then "This is a test comment" should not be deleted from post
+    Examples:
+      | userType             |
+      | Human Resource_kenan |
+      | Helpdesk_kenan       |
+      | Marketing_kenan      |

@@ -181,15 +181,63 @@ public class Emp_Interaction_StepDefinition {
     public void alert_should_appear(String string) {
         Assert.assertTrue(basePage.taskCreatedAlert.isDisplayed());
     }
-    @Then("task should be created with the {string} comment header")
-    public void task_should_be_created_with_the_comment_header(String expected) {
-       basePage.taskView.click();
-       String actual = basePage.taskPageTitle.getText();
-        basePage.taskPageClose.click();
+
+    @When("user go to any post")
+    public void user_go_to_any_post() {
+        basePage.get_only_my_posts();
+    }
+    @Then("reviewers' seen under the post")
+    public void reviewers_seen_under_the_post() {
+        basePage.reviewers.click();
+        BrowserUtils.sleep(3);
+        Assert.assertTrue(basePage.reviewersName.isDisplayed());
+    }
+    @When("user go to any post and click one of reviewer name")
+    public void user_go_to_any_post_and_click_one_of_reviewer_name() {
+        basePage.get_only_my_posts();
+        basePage.reviewers.click();
+        basePage.reviewersList.get(0).click();
+        BrowserUtils.sleep(2);
+
+    }
+    @Then("user is on the reviewer profile page")
+    public void user_is_on_the_reviewer_profile_page() {
+        Assert.assertEquals(2,Driver.getDriver().getWindowHandles().size());
+    }
+
+    @When("user click star icon on right top of any post")
+    public void user_click_star_icon_on_right_top_of_any_post() {
+        basePage.get_only_my_posts();
+        basePage.starIcon.click();
+    }
+    @When("click filter and search input next to activity stream")
+    public void click_filter_and_search_input_next_to_activity_stream() {
+        basePage.searchBox.click();
+
+    }
+    @When("click favorites")
+    public void click_favorites() {
+        basePage.favorites.click();
+        BrowserUtils.sleep(2);
+    }
+    @Then("favorite tag was added to search box and user see only favorite selected posts")
+    public void favorite_tag_was_added_to_search_box_and_user_see_only_favorite_selected_posts() {
+        basePage.starIcon.click();
+        String actual = basePage.favoriteTag.getText();
+        Assert.assertEquals("Favorites",actual);
+    }
+
+    @When("click delete button and click cancel")
+    public void click_delete_button_and_click_cancel() {
+        basePage.deleteBtn_comment.click();
+        Driver.getDriver().switchTo().alert().dismiss();
+    }
+    @Then("{string} should not be deleted from post")
+    public void should_not_be_deleted_from_post(String expected) {
+        String actual = basePage.allComments.get(0).getText();
         basePage.delete_comment_from_post();
         Assert.assertEquals(expected,actual);
     }
-
 
 
 

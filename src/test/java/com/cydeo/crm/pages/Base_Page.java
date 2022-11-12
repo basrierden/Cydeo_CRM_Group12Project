@@ -88,19 +88,26 @@ public class Base_Page {
     @FindBy(xpath = "//div[.='Task has been created']")
     public WebElement taskCreatedAlert;
 
-    @FindBy(xpath = "//span[.='View']")
-    public WebElement taskView;
+    @FindBy(xpath = "//span[@class='feed-content-view-cnt-wrap']")
+    public WebElement reviewers;
 
-    @FindBy(id = "pagetitle")
-    public WebElement taskPageTitle;
+    @FindBy(xpath = "//span[@class='bx-contentview-popup']")
+    public WebElement reviewersName;
 
-    @FindBy(xpath = "//span[@class='side-panel-close-inner']")
-    public WebElement taskPageClose;
+    @FindBy(xpath = "//a[@class='bx-contentview-popup-img']")
+    public List<WebElement> reviewersList;
 
+    @FindBy(xpath = "//span[@id='pagetitle']")
+    public WebElement reviewerHeader;
 
+    @FindBy(xpath = "//div[@title='Add to favorites']")
+    public WebElement starIcon;
 
+    @FindBy(xpath = "//span[.='Favorites']")
+    public WebElement favorites;
 
-
+    @FindBy(xpath = "//div[@class=\'main-ui-filter-search-square main-ui-filter-search-square-preset main-ui-square\']/div[1]")
+    public WebElement favoriteTag;
 
     public void get_only_my_posts() {
         BrowserUtils.sleep(3);
