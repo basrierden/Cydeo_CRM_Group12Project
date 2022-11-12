@@ -33,6 +33,9 @@ public class Employees_Page {
     @FindBy(xpath = "//span[@class='popup-window-titlebar-text']")
     public WebElement addDepartmentPopUpTitle;
 
+    @FindBy(xpath = "//label[@for='NAME']")
+    public WebElement departmentNameTitleText;
+
     @FindBy(xpath = "//input[@id='NAME']")
     public WebElement departmentNameInputBox;
 

@@ -11,6 +11,11 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 public class EmployeesFunctions_StepDefinitions {
 
@@ -35,6 +40,7 @@ public class EmployeesFunctions_StepDefinitions {
 
     @Then("the user sees the error message")
     public void the_user_sees_the_error_message() {
+        BrowserUtils.sleep(2);
         String expectedErrorMessage = "Section name is not specified.";
         String actualErrorMessage = employees_page.errorMessage.getText();
         Assert.assertEquals(expectedErrorMessage, actualErrorMessage);
@@ -45,7 +51,9 @@ public class EmployeesFunctions_StepDefinitions {
     public void the_user_clicks_on_add_department_button() {
         BrowserUtils.sleep(1);
         employees_page.addDepartmentButton.click();
-
+//        Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS); //to solve implicitlywait explicitlywait problem !!!
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait.until(ExpectedConditions.visibilityOf(employees_page.departmentNameTitleText));
     }
 
     @When("the user types Department name")
@@ -69,7 +77,7 @@ public class EmployeesFunctions_StepDefinitions {
 
     @When("the user adds a department")
     public void the_user_adds_a_department() {
-        BrowserUtils.sleep(1);
+//        BrowserUtils.sleep(1);
         employees_page.addButton.click();
 
     }
@@ -137,7 +145,7 @@ public class EmployeesFunctions_StepDefinitions {
     }
 
     @Then("add department pop-up is closed")
-    public void add_department_pop_up_is_closed() throws Exception {
+    public void add_department_pop_up_is_closed() {
         BrowserUtils.sleep(1);
         Assert.assertFalse(employees_page.addDepartmentPopUpTitle.isDisplayed());
     }
