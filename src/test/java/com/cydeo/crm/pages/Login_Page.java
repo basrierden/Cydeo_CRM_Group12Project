@@ -16,7 +16,7 @@ public class Login_Page {
     @FindBy(xpath = "//input[@name='USER_LOGIN']")
     public WebElement inputUsername;
 
-    @FindBy(xpath = "//input[@name='USER_PASSWORD0']")
+    @FindBy(xpath = "//input[@name='USER_PASSWORD']")
     public WebElement inputPassword;
 
     @FindBy(xpath = "//input[@value='Log In']")
@@ -39,6 +39,18 @@ public class Login_Page {
             case "Marketing":
                 username = ConfigurationReader.getProperty("marketing_username");
                 password = ConfigurationReader.getProperty("marketing_password");
+                break;
+            case "Helpdesk_kenan":
+                username = ConfigurationReader.getProperty("helpdesk_username_kenan");
+                password = ConfigurationReader.getProperty("helpdesk_password_kenan");
+                break;
+            case "Human Resource_kenan":
+                username = ConfigurationReader.getProperty("hr_username_kenan");
+                password = ConfigurationReader.getProperty("hr_password_kenan");
+                break;
+            case "Marketing_kenan":
+                username = ConfigurationReader.getProperty("marketing_username_kenan");
+                password = ConfigurationReader.getProperty("marketing_password_kenan");
                 break;
             default:
                 System.out.println("invalid entry");
