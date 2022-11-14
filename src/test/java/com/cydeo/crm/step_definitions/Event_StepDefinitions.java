@@ -117,6 +117,8 @@ public class Event_StepDefinitions {
         BrowserUtils.sleep(2);
         activityStreamPage.sendEventBtn.click();
 
+        // Anything
+
     }
     @Then("user should see selected location")
     public void user_should_see_selected_location() {
