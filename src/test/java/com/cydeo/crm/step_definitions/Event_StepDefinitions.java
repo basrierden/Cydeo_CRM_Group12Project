@@ -118,6 +118,7 @@ public class Event_StepDefinitions {
         activityStreamPage.sendEventBtn.click();
 
         // Anything now
+        // New change
 
     }
     @Then("user should see selected location")
