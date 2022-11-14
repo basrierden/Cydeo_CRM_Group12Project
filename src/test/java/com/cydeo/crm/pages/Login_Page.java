@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.concurrent.TimeUnit;
+
 public class Login_Page {
 
 
@@ -16,7 +18,7 @@ public class Login_Page {
     @FindBy(xpath = "//input[@name='USER_LOGIN']")
     public WebElement inputUsername;
 
-    @FindBy(xpath = "//input[@name='USER_PASSWORD0']")
+    @FindBy(xpath = "//input[@name='USER_PASSWORD']")
     public WebElement inputPassword;
 
     @FindBy(xpath = "//input[@value='Log In']")
