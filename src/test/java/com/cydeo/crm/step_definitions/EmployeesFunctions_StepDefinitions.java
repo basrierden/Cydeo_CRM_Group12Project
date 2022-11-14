@@ -51,7 +51,6 @@ public class EmployeesFunctions_StepDefinitions {
     public void the_user_clicks_on_add_department_button() {
         BrowserUtils.sleep(1);
         employees_page.addDepartmentButton.click();
-//        Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS); //to solve implicitlywait explicitlywait problem !!!
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.visibilityOf(employees_page.departmentNameTitleText));
     }
@@ -89,7 +88,6 @@ public class EmployeesFunctions_StepDefinitions {
 
         //delete new department after assertion
         employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
-
     }
 
 
@@ -237,7 +235,6 @@ public class EmployeesFunctions_StepDefinitions {
         boolean departmentPresent = Driver.getDriver().getPageSource().contains("Add department");
         Assert.assertFalse(departmentPresent);
     }
-
 
 }
 
