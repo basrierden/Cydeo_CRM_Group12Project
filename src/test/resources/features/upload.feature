@@ -31,7 +31,7 @@ Feature:  User should be able to upload files and pictures as messages
     And user uploads docx document
     Then recipient should see Edit button
 
-
+  @smoke
   Scenario: User should be able to remove files and images at any time before sending.
     When user clicks on Upload Files button
     And user uploads any file
