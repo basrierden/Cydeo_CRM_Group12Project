@@ -25,7 +25,7 @@ Feature:  User should be able to upload files and pictures as messages
     When user inserts file into text
     Then user sees in text label on button
 
-  @smoke
+
   Scenario: User should be able to allow a recipient to edit documents.
     When user clicks on Upload Files button
     And user uploads docx document
