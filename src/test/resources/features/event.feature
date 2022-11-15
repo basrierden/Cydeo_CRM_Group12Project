@@ -67,4 +67,30 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
+  @smoke
+  Scenario Outline: User should be able to send event by filling the mandatory fields.
+    Given the user logs in as a "<userType>"
+    When user clicks on Event button
+    And user send event invitation named DamirEvent
+    Then event should be created with given name
+
+    Examples:
+      | userType       |
+      | Human Resource |
+      | Helpdesk       |
+      | Marketing      |
+
+  @wip_Damir
+  Scenario Outline: User should NOT be able to send event without event name.
+    Given the user logs in as a "<userType>"
+    When user clicks on Event button without giving event name.
+    And user send event invitation without event name.
+    Then event should NOT be able to create event.
+
+    Examples:
+      | userType       |
+      | Human Resource |
+      | Helpdesk       |
+      | Marketing      |
+
 

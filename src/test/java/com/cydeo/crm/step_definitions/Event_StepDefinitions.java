@@ -182,7 +182,15 @@ public class Event_StepDefinitions {
         }
         Assert.assertTrue(result);
     }
-
+    @When("user send event invitation named DamirEvent")
+    public void user_send_event_invitation_named_DamirEvent() {
+        activityStreamPage.sendEventBtn.click();
+        BrowserUtils.sleep(2);
+    }
+    @Then("event should be created with given name")
+    public void event_should_be_created_with_given_name() {
+        Assert.assertEquals("DamirEvent", activityStreamPage.eventProof.getText());
+    }
 
 
 
