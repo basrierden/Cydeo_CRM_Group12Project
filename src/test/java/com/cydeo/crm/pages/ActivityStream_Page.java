@@ -145,7 +145,7 @@ public class ActivityStream_Page {
     public WebElement allDepartmentCheck;
 
     @FindBy(xpath = "(//a[@class='feed-add-post-destination-new'])[1]")
-    public WebElement attendeeProof;
+    public WebElement attendeeProof; // comment before commit
 
 
 
