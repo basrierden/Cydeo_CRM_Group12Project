@@ -3,7 +3,7 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
   User Story:US07_As a user, I should be able to create a poll by clicking on Poll tab under Active Stream.
 
   #--------------------------------A.C->1---------------------------------------
-  @wip
+  @smoke
   Scenario Outline: User should be able to add users by selecting multiple contacts from Employees and Department's contact lists.
     Given user logs in as "<userType>"
     When user adds users by selecting contacts
@@ -17,8 +17,8 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
     Given user logs in as "<userType>"
     When user type "First question" as a question
     And user type "First answer" and "Second answer" as answers
-    And user type "First message title" as a message title
-    Then user should see the questions and answers in the poll page
+    When user type "First message title" as a message title
+    Then user should see the question "First question" and answers "First answer" and "Second answer" in the poll page
     Examples:
       |userType|
       |Helpdesk|
@@ -36,6 +36,7 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
       |Human Resource|
       |Marketing|
   #--------------------------------A.C->4---------------------------------------
+  @wip
   Scenario Outline: User should be able to provide multiple choice to attendees by selecting the Allow multiple choice checkbox.
     Given user logs in as "<userType>"
     When user adds users by selecting contacts
@@ -43,8 +44,7 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
     And user type "First answer" and "Second answer" as answers
     And user type "First message title" as a message title
     And user select Allow multiple choice checkbox
-    And user click send button
-    Then user should see multiple choice in the poll
+    Then user should see selected Allow multiple choice checkbox in the poll
 
     Examples:
       |userType|
