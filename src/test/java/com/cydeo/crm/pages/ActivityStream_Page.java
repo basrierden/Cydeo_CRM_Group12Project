@@ -49,7 +49,7 @@ public class ActivityStream_Page {
     @FindBy(id = "feed-event-view-from-livefeed3521")
     public WebElement eventDayAndTime;
 
-    // Event will start on:
+    // Event will start on: // Test for conflict
     @FindBy(xpath = "//input[@id='feed-cal-event-fromcal_3Jcl']")
     public WebElement inputStartDate;
 
