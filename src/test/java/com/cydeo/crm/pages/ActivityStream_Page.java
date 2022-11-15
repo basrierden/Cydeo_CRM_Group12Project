@@ -227,4 +227,10 @@ public class ActivityStream_Page {
     @FindBy(xpath = "//span[@class='bx-core-popup-menu-item-text']")
     public WebElement removeLinkButton;
 
+    //upload_stepDefinitions locators===>START//
+    @FindBy(xpath = "(//span[.='Message'])[2]")
+    public WebElement messageBTN;
+
+    //upload_stepDefinitions locators===>END//
+
 }
