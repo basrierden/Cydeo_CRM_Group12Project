@@ -181,6 +181,7 @@ public class Event_StepDefinitions {
             e.getMessage();
         }
         Assert.assertTrue(result);
+        // some text
     }
     @When("user send event invitation named DamirEvent")
     public void user_send_event_invitation_named_DamirEvent() {
