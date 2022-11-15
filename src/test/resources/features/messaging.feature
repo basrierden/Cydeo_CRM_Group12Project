@@ -4,7 +4,7 @@ Feature: Adding certain features to messages
 
   User Types: Human Resource, Helpdesk, Marketing
 
-
+  @smoke
   Scenario Outline: Add mentions about department employees
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality and writes a message
@@ -16,7 +16,7 @@ Feature: Adding certain features to messages
       | Helpdesk       |
       | Marketing      |
 
-
+  @smoke
   Scenario Outline: Attaching a link to the text
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality
@@ -58,7 +58,7 @@ Feature: Adding certain features to messages
 
 
 
-  @wip
+  @smoke
   Scenario Outline: Removing a link from the the message before sending
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality
@@ -72,7 +72,7 @@ Feature: Adding certain features to messages
       | Helpdesk       |
       | Marketing      |
 
-
+  @smoke
   Scenario Outline: Adding quotes to the message
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality
@@ -85,7 +85,7 @@ Feature: Adding certain features to messages
       | Helpdesk       |
       | Marketing      |
 
-
+  @smoke
   Scenario Outline: Adding tags to  the message
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality
@@ -99,7 +99,7 @@ Feature: Adding certain features to messages
       | Marketing      |
 
 
-
+  @smoke
   Scenario Outline: Removing tags from  the message
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality
