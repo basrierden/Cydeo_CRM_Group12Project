@@ -83,8 +83,19 @@ public class EmployeesFunctions_StepDefinitions {
 
     @Then("the user sees the added department on the company structure")
     public void the_user_sees_the_added_department_on_the_company_structure() {
-        WebElement DepartmentTitle = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1"));
-        Assert.assertTrue(DepartmentTitle.isDisplayed());
+
+BrowserUtils.sleep(2);
+        for (int i = 0; i < 2; i++) {
+            try{
+                WebElement DepartmentTitle = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1"));
+                Assert.assertTrue(DepartmentTitle.isDisplayed());
+                break;
+            }
+            catch(StaleElementReferenceException exp){
+                System.out.println(exp.getMessage());
+            }
+        }
+
 
         //delete new department after assertion
         employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
