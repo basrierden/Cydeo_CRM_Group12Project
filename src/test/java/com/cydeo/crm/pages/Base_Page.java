@@ -126,5 +126,53 @@ public class Base_Page {
 
     }
 
+    //upload_stepDefinitions locators===>START//
 
+    @FindBy(xpath = "//button[@id='blog-submit-button-save']")
+    public WebElement messageSendButton;
+
+    @FindBy(xpath = "//span[@id='bx-b-uploadfile-blogPostForm']")
+    public WebElement messageUploadFileBtn;
+
+    @FindBy(xpath = "(//input[@class='diskuf-fileUploader wd-test-file-light-inp '])[1]")
+    public WebElement chooseFilesForMessage;
+
+    @FindBy(xpath = "(//div[.='Photo:'])[1]")
+    public WebElement uploadedJpegFile;
+
+    @FindBy(xpath = "(//div[.='Files:'])[1]")
+    public WebElement uploadedPDFFile;
+
+    @FindBy(xpath = "(//div[.='Files:'])[1]")
+    public WebElement uploadedDocXFile;
+
+    @FindBy(xpath = "//img[@id='disk-attach-image-978']")
+    public WebElement uploadImageProof;
+
+    @FindBy(xpath = "(//span[.='Insert in text'])[2]")
+    public WebElement msgInsertInTextBtn;
+
+    @FindBy(xpath = "(//span[.='In text'])[2]")
+    public WebElement msgInTextBtn;
+
+    @FindBy(xpath = "(//a[@class='feed-con-file-changes-link'])[1]")
+    public WebElement recipientEditBtn;
+
+    @FindBy(xpath = "//span[@class='del-but']")
+    public WebElement msgFileDeleteBtn;
+
+    @FindBy(xpath = "//span[@title='Click to insert file']")
+    public WebElement addedFile;
+
+    @FindBy(xpath = "//span[@class='files-name-edit-btn']")
+    public WebElement fileNameEditBtn;
+
+    @FindBy(xpath = "//input[@value='DOCX Document (38)']")
+    public WebElement inputRename;
+
+    @FindBy(xpath = "//a[@title='Renamed fileDOCX Document (38).docx']")
+    public WebElement renamedFile;
+
+
+    //upload_stepDefinitions locators===>END//
 }
