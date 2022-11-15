@@ -46,6 +46,9 @@ public class ActivityStream_Page {
     @FindBy(xpath = "//a[.='DamirEvent']")
     public WebElement eventProof;
 
+    @FindBy(xpath = "(//a[.='My event'])[1]")
+    public WebElement eventNoNameProof;
+
     @FindBy(id = "feed-event-view-from-livefeed3521")
     public WebElement eventDayAndTime;
 

@@ -173,15 +173,7 @@ public class Event_StepDefinitions {
     }
     @Then("user should see attendee proof")
     public void user_should_see_attendee_proof() {
-
-        boolean result = false;
-        try {
-            result = BrowserUtils.assertWebElementNotPresent(activityStreamPage.attendeeProof);
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        Assert.assertTrue(result);
-        // some text
+        Assert.assertTrue(activityStreamPage.attendeeProof.isDisplayed());
     }
     @When("user send event invitation named DamirEvent")
     public void user_send_event_invitation_named_DamirEvent() {
@@ -193,6 +185,20 @@ public class Event_StepDefinitions {
         Assert.assertEquals("DamirEvent", activityStreamPage.eventProof.getText());
     }
 
+    @When("user clicks on Event button without giving event name.")
+    public void user_clicks_on_event_button_without_giving_event_name() {
+        activityStreamPage.eventButton.click();
+        BrowserUtils.sleep(3);
+    }
+    @When("user send event invitation without event name.")
+    public void user_send_event_invitation_without_event_name() {
+        activityStreamPage.sendEventBtn.click();
+    }
+    @Then("event should NOT be able to create event.")
+    public void event_should_not_be_able_to_create_event() {
+        BrowserUtils.sleep(3);
+        Assert.assertFalse(activityStreamPage.eventNoNameProof.isDisplayed());
+    }
 
 
 

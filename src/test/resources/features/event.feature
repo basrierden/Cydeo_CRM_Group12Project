@@ -32,7 +32,6 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-
   Scenario: User should be able to select the event location from the dropdown.
     Given the user logs in as a "hr23@cybertekschool.com" and password "UserUser"
     When user clicks on Event button
