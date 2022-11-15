@@ -9,6 +9,7 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
     When user adds users by selecting contacts
     Then user see added these contacts in the poll list
     Examples:
+
       |userType|
       | Human Resource |
       | Helpdesk       |
