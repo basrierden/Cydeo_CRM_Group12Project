@@ -92,4 +92,15 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
+  @wip_Damir
+  Scenario Outline: User should be able to cancel sending event at any time before sending.
+    Given the user logs in as a "<userType>"
+    When user clicks on Event button
+
+
+    Examples:
+      | userType       |
+      | Human Resource |
+      | Helpdesk       |
+      | Marketing      |
 
