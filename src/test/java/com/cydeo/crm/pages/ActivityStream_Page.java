@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import java.util.List;
 
 public class ActivityStream_Page {
 
@@ -147,5 +148,101 @@ public class ActivityStream_Page {
     @FindBy(xpath = "(//a[@class='feed-add-post-destination-new'])[1]")
     public WebElement attendeeProof; // comment before commit
 
+    @FindBy(xpath = "//a[contains(@id, '_mention')]")
+    public List<WebElement> mentionsList;
+
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement messageTitleFrame;
+
+    @FindBy(xpath = "//body[@contenteditable='true']")
+    public WebElement frameBody;
+
+    @FindBy(xpath = "//span[@id='bx-b-mention-blogPostForm']")
+    public WebElement addMentionButton;
+
+    @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-link']")
+    public WebElement attachLinkButton;
+
+    @FindBy(xpath = "//span[@title='Insert video']")
+    public WebElement insertVideoButton;
+
+    @FindBy(xpath ="//span[@title='Quote text']" )
+    public WebElement quoteTextButton;
+
+    @FindBy(xpath = "//span[@id='bx-b-tag-input-blogPostForm']")
+    public WebElement addTagButton;
+
+    @FindBy(xpath = "(//span[.='Message'])[2]")
+    public WebElement messageFunctionality;
+
+    public void messageFunctionClickTo(String buttonToClick ){
+
+        switch (buttonToClick) {
+            case "Add mention":
+                addMentionButton.click();
+                break;
+            case "Link":
+                attachLinkButton.click();
+                break;
+            case "Insert video":
+                insertVideoButton.click();
+                break;
+            case "Quote text":
+                quoteTextButton.click();
+                break;
+            case "Add tag":
+                addTagButton.click();
+                break;
+        }
+    }
+
+    @FindBy(xpath = "//input[@id='linkidPostFormLHE_blogPostForm-text']")
+    public WebElement linkTextInput;
+
+    @FindBy(xpath = "//input[@id='linkidPostFormLHE_blogPostForm-href']")
+    public WebElement linkURLInput;
+
+    @FindBy(xpath = "//input[@id='undefined']")
+    public WebElement linkSaveButton;
+
+    @FindBy(xpath = "//body[@contenteditable='true']/a")
+    public WebElement messageLinkText;
+
+    @FindBy(id="video_idPostFormLHE_blogPostForm-source")
+    public WebElement videoSourceInput;
+
+    @FindBy(xpath = "//input[@id='undefined']")
+    public WebElement videoSaveButton;
+
+    @FindBy(xpath = "//span[@title='Video']")
+    public WebElement insertedVideo;
+
+    @FindBy(xpath = "//blockquote[@class='bxhtmled-quote']")
+    public WebElement quoteBody;
+
+    @FindBy(xpath = "//input[@id='TAGS_blogPostForm67abSn']")
+    public WebElement addTagInputBox;
+
+    @FindBy(xpath = "//span[@class='popup-window-button']")
+    public WebElement tagAddButton;
+
+    @FindBy(xpath = "//span[@class='feed-add-post-tags']")
+    public WebElement addedTagOnDisplay;
+
+    @FindBy(xpath = "(//span[@class='feed-add-post-del-but'])[2]")
+    public WebElement removeTagButton;
+
+    public boolean assertWebElementNotPresent(WebElement webElement)  {
+
+        try {
+            webElement.getText();
+            return false;
+        } catch (Exception ignored) {
+            return true;
+        }
+    }
+
+    @FindBy(xpath = "//span[@class='bx-core-popup-menu-item-text']")
+    public WebElement removeLinkButton;
 
 }

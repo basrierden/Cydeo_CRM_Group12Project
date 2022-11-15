@@ -19,6 +19,9 @@ public class Login_Page {
     @FindBy(xpath = "//input[@name='USER_PASSWORD']")
     public WebElement inputPassword;
 
+    @FindBy(xpath = "//input[@placeholder='Password']")
+    public WebElement inputPassword2;
+
     @FindBy(xpath = "//input[@value='Log In']")
     public WebElement loginButton;
 
@@ -61,7 +64,8 @@ public class Login_Page {
         inputPassword.sendKeys(password);
         loginButton.click();
 
-    }//
+    }
+// AA
 
 
 
