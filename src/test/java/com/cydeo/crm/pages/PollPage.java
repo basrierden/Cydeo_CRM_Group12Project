@@ -1,7 +1,9 @@
 package com.cydeo.crm.pages;
 
+import com.cydeo.crm.utilities.BrowserUtils;
 import com.cydeo.crm.utilities.Driver;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -37,12 +39,6 @@ public class PollPage {
     public void clickPopupClose(){
         popupClose.click();
     }
-    @FindBy(xpath = "//body[@contenteditable='true']")
-    public WebElement titleMessage;
-    public void clickTitleMessage(){
-        Driver.getDriver().switchTo().frame(0);
-        titleMessage.click();
-    }
     @FindBy(xpath = "(//span[.='Kara Murat'])[2]")
     public WebElement selectedContact;
     public void verifyContact(){
@@ -50,4 +46,89 @@ public class PollPage {
         String expected="Kara Murat";
         Assert.assertEquals(expected, actual);
     }
+    @FindBy(xpath = "//body[@contenteditable='true']")
+    public WebElement titleMessage;
+    public void typeContentTitle(String titleMessagee){
+        Driver.getDriver().switchTo().frame(0);
+        titleMessage.sendKeys(titleMessagee);
+        Driver.getDriver().switchTo().defaultContent();
+    }
+    @FindBy(xpath = "//input[@id='question_0']")
+    public WebElement inputQuestion;
+    @FindBy(xpath = "//input[@id='answer_0__0_']")
+    public WebElement inputAnswer1;
+    @FindBy(xpath = "//input[@id='answer_0__1_']")
+    public WebElement inputAnswer2;
+    public void typeInputQuestion(String question){
+        inputQuestion.sendKeys(question);
+    }
+    public void typeInputAnswer1(String answer1){
+        inputAnswer1.sendKeys(answer1);
+    }
+    public void typeInputAnswer2(String answer2){
+        inputAnswer2.sendKeys(answer2);
+    }
+    @FindBy(xpath = "//button[@id='blog-submit-button-save']")
+    public WebElement sendButton;
+    public void clickSendButton(){
+        sendButton.click();
+    }
+    public WebElement typingQuestion(String name){
+        return Driver.getDriver().findElement(By.xpath("//div[.=\""+name+"\"]"));
+    }
+    public WebElement typingAnswer1(String name){
+        return Driver.getDriver().findElement(By.xpath("//label[.=\""+name+"\"]"));
+    }
+    public WebElement typingAnswer2(String name){
+        return Driver.getDriver().findElement(By.xpath("//label[.=\""+name+"\"]"));
+    }
+    public void verifyQuestion(String question){
+        String expected=question;
+        String actual=typingQuestion(question).getText();
+        Assert.assertEquals(expected, actual);
+    }
+    @FindBy(xpath = "//span[@id='feed-add-post-form-tab-message']")
+    public WebElement messageButton;
+    public void clickMessageButton(){
+        messageButton.click();
+    }
+    @FindBy(xpath = "//label[@class='vote-block-close delq']")
+    public  WebElement deleteButton;
+    public void clickDeleteButtonForQuestion(){
+        actions.moveToElement(inputQuestion).perform();
+        BrowserUtils.sleep(5);
+        deleteButton.click();
+    }
+    public void clickDeleteButtonForAnswer1(){
+        actions.moveToElement(inputAnswer1).perform();
+        BrowserUtils.sleep(5);
+        deleteButton.click();
+    }
+    public void clickDeleteButtonForAnswer2(){
+        actions.moveToElement(inputAnswer2).perform();
+        BrowserUtils.sleep(5);
+        deleteButton.click();
+    }
+    public boolean assertWebElementNotPresent(WebElement webElement) throws Exception{
+
+        try {
+            webElement.getText();
+            return false;
+        } catch (Exception ignored) {
+            return true;
+        }
+    }
+    @FindBy(xpath = "//input[@id='multi_2']")
+    public WebElement allowMultipleChangesCheckbox;
+    public void clickAllowMultipleChangesCheckbox(){
+        allowMultipleChangesCheckbox.click();
+    }
+    public void verifySelectedAllowMultipleChangesCheckbox(){
+        Assert.assertTrue(allowMultipleChangesCheckbox.isSelected());
+    }
+
+
+
+
+
 }
