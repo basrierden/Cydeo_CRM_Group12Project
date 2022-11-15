@@ -1,21 +1,28 @@
 package com.cydeo.crm.step_definitions;
 
 import com.cydeo.crm.pages.ActivityStream_Page;
+import com.cydeo.crm.pages.Login_Page;
 import com.cydeo.crm.utilities.BrowserUtils;
+import com.cydeo.crm.utilities.ConfigurationReader;
+import com.cydeo.crm.utilities.Driver;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.logging.Log;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
 public class Event_StepDefinitions {
 
     ActivityStream_Page activityStreamPage = new ActivityStream_Page();
+    Login_Page loginPage = new Login_Page();
 
 
     @When("user clicks on Event button")
     public void user_clicks_on_event_button() {
         activityStreamPage.eventButton.click();
-        BrowserUtils.sleep(5);
+        BrowserUtils.sleep(3);
         activityStreamPage.inputEventName.sendKeys("DamirEvent");
         BrowserUtils.sleep(2);
     }
@@ -101,7 +108,7 @@ public class Event_StepDefinitions {
     }
     @When("user clicks on Upcoming Events")
     public void user_clicks_on_upcoming_events() {
-        BrowserUtils.sleep(3);
+        BrowserUtils.sleep(2);
         activityStreamPage.upcomingEvents.click();
         BrowserUtils.sleep(5);
     }
@@ -121,12 +128,77 @@ public class Event_StepDefinitions {
         // New change
 
     }
+
+    @Given("the user logs in as a {string} and password {string}")
+    public void the_user_logs_in_as_a_and_password(String username, String password) {
+        Driver.getDriver().get(ConfigurationReader.getProperty("crm.url"));
+        loginPage.inputUsername.sendKeys(username);
+        loginPage.inputPassword.sendKeys(password);
+        loginPage.loginButton.click();
+    }
+    @When("user choose date and time for meeting")
+    public void user_choose_date_and_time_for_meeting() {
+        BrowserUtils.sleep(3);
+        activityStreamPage.allDayCheckbox.click();
+    }
+
     @Then("user should see selected location")
     public void user_should_see_selected_location() {
         BrowserUtils.sleep(3);
         Assert.assertEquals("West Meeting Room", activityStreamPage.meetingRoomProof.getText());
     }
 
+    @When("user click on members field")
+    public void user_click_on_members_field() {
+        activityStreamPage.members.click();
+        BrowserUtils.sleep(1);
+    }
+    @When("user add Kadir to recipient and send meeting invitation")
+    public void user_add_kadir_to_recipient_and_send_meeting_invitation() {
+        activityStreamPage.membersInputText.sendKeys("Kadir", Keys.ENTER);
+        activityStreamPage.sendEventBtn.click();
+    }
+    @Then("user should see Kadir is attendee")
+    public void user_should_see_kadir_is_attendee() {
+        BrowserUtils.sleep(2);
+        Assert.assertTrue(activityStreamPage.attendeeProof.isDisplayed());
+    }
+
+    @When("user adds eahdgfelr department as attendee and send meeting invitation")
+    public void user_adds_eahdgfelr_department_as_attendee_and_send_meeting_invitation() {
+        activityStreamPage.employeesAndDepartments.click();
+        activityStreamPage.eahdgfelrDepartment.click();
+        activityStreamPage.allDepartmentCheck.click();
+        activityStreamPage.sendEventBtn.click();
+    }
+    @Then("user should see attendee proof")
+    public void user_should_see_attendee_proof() {
+        Assert.assertTrue(activityStreamPage.attendeeProof.isDisplayed());
+    }
+    @When("user send event invitation named DamirEvent")
+    public void user_send_event_invitation_named_DamirEvent() {
+        activityStreamPage.sendEventBtn.click();
+        BrowserUtils.sleep(2);
+    }
+    @Then("event should be created with given name")
+    public void event_should_be_created_with_given_name() {
+        Assert.assertEquals("DamirEvent", activityStreamPage.eventProof.getText());
+    }
+
+    @When("user clicks on Event button without giving event name.")
+    public void user_clicks_on_event_button_without_giving_event_name() {
+        activityStreamPage.eventButton.click();
+        BrowserUtils.sleep(3);
+    }
+    @When("user send event invitation without event name.")
+    public void user_send_event_invitation_without_event_name() {
+        activityStreamPage.sendEventBtn.click();
+    }
+    @Then("event should NOT be able to create event.")
+    public void event_should_not_be_able_to_create_event() {
+        BrowserUtils.sleep(3);
+        Assert.assertFalse(activityStreamPage.eventNoNameProof.isDisplayed());
+    }
 
 
 
