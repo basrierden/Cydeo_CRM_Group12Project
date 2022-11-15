@@ -148,12 +148,4 @@ public class ActivityStream_Page {
     public WebElement attendeeProof; // comment before commit
 
 
-
-
-
-
-
-
-
-
 }
