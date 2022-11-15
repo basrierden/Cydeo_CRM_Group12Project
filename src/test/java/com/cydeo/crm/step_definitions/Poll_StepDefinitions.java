@@ -76,4 +76,13 @@ public class Poll_StepDefinitions {
         Assert.assertTrue(pollPage.assertWebElementNotPresent(pollPage.inputAnswer1));
         Assert.assertTrue(pollPage.assertWebElementNotPresent(pollPage.inputAnswer2));
     }
+
+    @And("user select Allow multiple choice checkbox")
+    public void userSelectAllowMultipleChoiceCheckbox() {
+        
+    }
+
+    @Then("user should see selected Allow multiple choice checkbox in the poll")
+    public void userShouldSeeSelectedAllowMultipleChoiceCheckboxInThePoll() {
+    }
 }
