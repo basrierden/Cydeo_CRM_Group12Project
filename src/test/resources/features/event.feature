@@ -1,3 +1,4 @@
+@regression
 Feature: As a user, I should be able to create events by clicking on Event tab under Activity Stream.
   User Story: CRMLYEUG-1481
   User types: Human Resource, Helpdesk, Marketing
@@ -79,7 +80,7 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-  @wip_Damir
+  @bug
   Scenario Outline: User should NOT be able to send event without event name.
     Given the user logs in as a "<userType>"
     When user clicks on Event button without giving event name.
@@ -92,11 +93,14 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-  @wip_Damir
   Scenario Outline: User should be able to cancel sending event at any time before sending.
     Given the user logs in as a "<userType>"
     When user clicks on Event button
-
+    And user change date and time for start event
+    And user change date and time for end event
+    And user specifies time zone
+    And user clicks on cancel event button
+    Then user should see Send Message label
 
     Examples:
       | userType       |

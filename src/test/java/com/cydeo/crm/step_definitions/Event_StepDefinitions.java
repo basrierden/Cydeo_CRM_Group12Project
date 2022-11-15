@@ -200,6 +200,17 @@ public class Event_StepDefinitions {
         Assert.assertFalse(activityStreamPage.eventNoNameProof.isDisplayed());
     }
 
+    @When("user clicks on cancel event button")
+    public void user_clicks_on_cancel_event_button() {
+        BrowserUtils.sleep(2);
+        activityStreamPage.cancelEventBtn.click();
+    }
+    @Then("user should see Send Message label")
+    public void user_should_see_send_message_label() {
+        BrowserUtils.sleep(1);
+        Assert.assertTrue(activityStreamPage.sendMessageTitle.isDisplayed());
+    }
+
 
 
 }
