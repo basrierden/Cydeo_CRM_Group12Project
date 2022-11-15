@@ -32,15 +32,39 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-  @wip_Damir
-  Scenario Outline: User should be able to select the event location from the dropdown.
-    Given the user logs in as a "<userType>"
+
+  Scenario: User should be able to select the event location from the dropdown.
+    Given the user logs in as a "hr23@cybertekschool.com" and password "UserUser"
     When user clicks on Event button
+    And user choose date and time for meeting
     And user select location for event
     Then user should see selected location
+
+  Scenario Outline: User should be able to add individual members.
+    Given the user logs in as a "<userType>"
+    When user clicks on Event button
+    And user click on members field
+    And user add Kadir to recipient and send meeting invitation
+    Then user should see Kadir is attendee
 
     Examples:
       | userType       |
       | Human Resource |
       | Helpdesk       |
       | Marketing      |
+
+  @bug
+  Scenario Outline: User should be able to add departments.
+    Given the user logs in as a "<userType>"
+    When user clicks on Event button
+    And user click on members field
+    And user adds eahdgfelr department as attendee and send meeting invitation
+    Then user should see attendee proof
+
+    Examples:
+      | userType       |
+      | Human Resource |
+      | Helpdesk       |
+      | Marketing      |
+
+

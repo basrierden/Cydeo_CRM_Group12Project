@@ -17,5 +17,16 @@ public class BrowserUtils {
         }
     }
 
+    public static boolean assertWebElementNotPresent(WebElement webElement){
+
+        try {
+            Driver.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            webElement.getText();
+            return false;
+        } catch (Exception ignored) {
+            return true;
+        }
+    }
+
 
 }

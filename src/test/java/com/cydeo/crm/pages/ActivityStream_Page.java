@@ -129,6 +129,24 @@ public class ActivityStream_Page {
     @FindBy(xpath = "//select[@id='event-remind_typecal_3Jcl']")
     public WebElement minHourDaySelect;
 
+    @FindBy(css = "div#feed-event-dest-cont")
+    public WebElement members;
+
+    @FindBy(css = "input#feed-event-dest-input")
+    public WebElement membersInputText;
+
+    @FindBy(css = "a#destDepartmentTab_calnAJEM3")
+    public WebElement employeesAndDepartments;
+
+    @FindBy(xpath = "(//div[@class='bx-finder-company-department-arrow'])[2]")
+    public WebElement eahdgfelrDepartment;
+
+    @FindBy(xpath = "(//div[@class='bx-finder-company-department-check-arrow'])[1]")
+    public WebElement allDepartmentCheck;
+
+    @FindBy(xpath = "(//a[@class='feed-add-post-destination-new'])[1]")
+    public WebElement attendeeProof;
+
 
 
 
