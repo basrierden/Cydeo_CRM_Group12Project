@@ -5,7 +5,7 @@ Feature:
 
 
 # AC1. All user types should be able to display company structure.
-    @CRMLYEUG-1482
+  @smoke @CRMLYEUG-1482
   Scenario Outline: The user displays company structure.
     Given the user logs in as a "<userType>"
     When the user clicks on Employees button on the left menu

@@ -51,7 +51,6 @@ public class EmployeesFunctions_StepDefinitions {
     public void the_user_clicks_on_add_department_button() {
         BrowserUtils.sleep(1);
         employees_page.addDepartmentButton.click();
-//        Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS); //to solve implicitlywait explicitlywait problem !!!
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.visibilityOf(employees_page.departmentNameTitleText));
     }
@@ -84,12 +83,22 @@ public class EmployeesFunctions_StepDefinitions {
 
     @Then("the user sees the added department on the company structure")
     public void the_user_sees_the_added_department_on_the_company_structure() {
-        WebElement DepartmentTitle = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1"));
-        Assert.assertTrue(DepartmentTitle.isDisplayed());
+
+BrowserUtils.sleep(2);
+        for (int i = 0; i < 2; i++) {
+            try{
+                WebElement DepartmentTitle = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1"));
+                Assert.assertTrue(DepartmentTitle.isDisplayed());
+                break;
+            }
+            catch(StaleElementReferenceException exp){
+                System.out.println(exp.getMessage());
+            }
+        }
+
 
         //delete new department after assertion
         employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
-
     }
 
 
@@ -237,7 +246,6 @@ public class EmployeesFunctions_StepDefinitions {
         boolean departmentPresent = Driver.getDriver().getPageSource().contains("Add department");
         Assert.assertFalse(departmentPresent);
     }
-
 
 }
 
