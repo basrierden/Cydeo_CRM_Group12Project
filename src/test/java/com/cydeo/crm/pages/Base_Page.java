@@ -147,7 +147,7 @@ public class Base_Page {
     @FindBy(xpath = "(//div[.='Files:'])[1]")
     public WebElement uploadedDocXFile;
 
-    @FindBy(xpath = "//img[@id='disk-attach-image-978']")
+    @FindBy(xpath = "//img[@id='disk-attach-image-990']")
     public WebElement uploadImageProof;
 
     @FindBy(xpath = "(//span[.='Insert in text'])[2]")
