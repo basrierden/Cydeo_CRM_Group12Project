@@ -46,10 +46,13 @@ public class ActivityStream_Page {
     @FindBy(xpath = "//a[.='DamirEvent']")
     public WebElement eventProof;
 
+    @FindBy(xpath = "(//a[.='My event'])[1]")
+    public WebElement eventNoNameProof;
+
     @FindBy(id = "feed-event-view-from-livefeed3521")
     public WebElement eventDayAndTime;
 
-    // Event will start on:
+    // Event will start on: // Test for conflict
     @FindBy(xpath = "//input[@id='feed-cal-event-fromcal_3Jcl']")
     public WebElement inputStartDate;
 
@@ -129,6 +132,24 @@ public class ActivityStream_Page {
 
     @FindBy(xpath = "//select[@id='event-remind_typecal_3Jcl']")
     public WebElement minHourDaySelect;
+
+    @FindBy(css = "div#feed-event-dest-cont")
+    public WebElement members;
+
+    @FindBy(css = "input#feed-event-dest-input")
+    public WebElement membersInputText;
+
+    @FindBy(css = "a#destDepartmentTab_calnAJEM3")
+    public WebElement employeesAndDepartments;
+
+    @FindBy(xpath = "(//div[@class='bx-finder-company-department-arrow'])[2]")
+    public WebElement eahdgfelrDepartment;
+
+    @FindBy(xpath = "(//div[@class='bx-finder-company-department-check-arrow'])[1]")
+    public WebElement allDepartmentCheck;
+
+    @FindBy(xpath = "(//a[@class='feed-add-post-destination-new'])[1]")
+    public WebElement attendeeProof; // comment before commit
 
     @FindBy(xpath = "//a[contains(@id, '_mention')]")
     public List<WebElement> mentionsList;
@@ -226,5 +247,11 @@ public class ActivityStream_Page {
 
     @FindBy(xpath = "//span[@class='bx-core-popup-menu-item-text']")
     public WebElement removeLinkButton;
+
+    //upload_stepDefinitions locators===>START//
+    @FindBy(xpath = "(//span[.='Message'])[2]")
+    public WebElement messageBTN;
+
+    //upload_stepDefinitions locators===>END//
 
 }
