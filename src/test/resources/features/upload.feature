@@ -6,7 +6,7 @@ Feature:  User should be able to upload files and pictures as messages
     And user clicks Message button
     Then user is on the Message page
 
-@smoke@test
+
   Scenario:User should be upload max 3 files at same time
     When user clicks on Upload Files button
     And user uploads jpeg file
@@ -14,7 +14,7 @@ Feature:  User should be able to upload files and pictures as messages
     And user uploads docx file
     Then user is able to upload files
 
-
+  @test
   Scenario: User should be able to display the uploaded picture in Activity Stream.
     When user clicks on Upload Files button
     And user uploads picture
