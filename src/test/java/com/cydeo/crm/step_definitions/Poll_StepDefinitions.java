@@ -21,7 +21,6 @@ public class Poll_StepDefinitions {
     public void user_logs_in_as(String string) {
         Driver.getDriver().get(ConfigurationReader.getProperty("crm.url"));
         loginPage.loginAs(string);
-
     }
     @When("user adds users by selecting contacts")
     public void user_adds_users_by_selecting_contacts() throws InterruptedException {
@@ -79,10 +78,56 @@ public class Poll_StepDefinitions {
 
     @And("user select Allow multiple choice checkbox")
     public void userSelectAllowMultipleChoiceCheckbox() {
-        
+        pollPage.clickAllowMultipleChangesCheckbox();
     }
 
     @Then("user should see selected Allow multiple choice checkbox in the poll")
     public void userShouldSeeSelectedAllowMultipleChoiceCheckboxInThePoll() {
+        pollPage.verifySelectedAllowMultipleChangesCheckbox();
+
+    }
+
+    @Then("user should create a poll")
+    public void userShouldCreateAPoll() {
+        pollPage.clickSendButton();
+        BrowserUtils.sleep(5);
+        pollPage.verifyCreatedPoll();
+    }
+
+    @Then("user should see {string} as an error message for message title after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageAfterClickingTheSentButton(String arg0) {
+        pollPage.clickSendButton();
+        pollPage.verifyWarningMessageAboutWithoutTitleMessage(arg0);
+    }
+
+    @And("user type {string} as answers")
+    public void userTypeAsAnswers(String arg0) {
+    }
+
+
+    @Then("user should see {string} as an error message for contacts after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageForContactsAfterClickingTheSentButton(String arg0) {
+        pollPage.clickDeleteAllEmployeeButton();
+        pollPage.clickSendButton();
+        BrowserUtils.sleep(5);
+        pollPage.verifyWarningMessageAboutWithoutContact(arg0);
+    }
+
+    @When("user click poll button")
+    public void userClickPollButton() {
+        pollPage.clickPollButton();
+    }
+    @Then("user should see {string} as an error message for question after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageForQuestionAfterClickingTheSentButton(String arg0) {
+        pollPage.clickSendButton();
+        pollPage.verifyWarningMessageAboutWithoutQuestion(arg0);}
+
+    @Then("user should see {string} as an error message for an answer after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageForAnAnswerAfterClickingTheSentButton(String arg0) {
+        
+    }
+
+    @Then("user should see {string}.........{string} as an error message for two answer after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageForTwoAnswerAfterClickingTheSentButton(String arg0, String arg1) {
     }
 }
