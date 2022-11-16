@@ -140,6 +140,7 @@ public class Base_Page {
     @FindBy(xpath = "(//div[.='Photo:'])[1]")
     public WebElement uploadedJpegFile;
 
+
     @FindBy(xpath = "(//div[.='Files:'])[1]")
     public WebElement uploadedPDFFile;
 
