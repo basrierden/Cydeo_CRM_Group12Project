@@ -126,6 +126,33 @@ public class PollPage {
     public void verifySelectedAllowMultipleChangesCheckbox(){
         Assert.assertTrue(allowMultipleChangesCheckbox.isSelected());
     }
+    @FindBy(xpath = "//div[@id='blog_post_body_2670']")
+    public WebElement messageTitleForPoll;
+    public void verifyCreatedPoll(){
+        String expected="First message title";
+        String actual=messageTitleForPoll.getText();
+        Assert.assertEquals(expected,actual);
+    }
+    @FindBy(xpath = "//span[.='The message title is not specified']")
+    public WebElement warningMessageAboutWithoutTitleMessage;
+    public void verifyWarningMessageAboutWithoutTitleMessage(String string){
+        String expected=string;
+        String actual=warningMessageAboutWithoutTitleMessage.getText();
+        Assert.assertEquals(string,actual);
+    }
+    @FindBy(xpath = "//span[@class='feed-add-post-del-but']")
+    public WebElement deleteAllEmployeeButton;
+    public void clickDeleteAllEmployeeButton(){
+        deleteAllEmployeeButton.click();
+    }
+    @FindBy(xpath = "//span[.='Please specify at least one person.']")
+    public WebElement warningMessageAboutWithoutContact;
+    public void verifyWarningMessageAboutWithoutContact(String string){
+        String expected=string;
+        String actual=warningMessageAboutWithoutContact.getText();
+        Assert.assertEquals(expected,actual);
+    }
+
 
 
 
