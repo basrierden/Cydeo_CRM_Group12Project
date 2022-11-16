@@ -118,7 +118,7 @@ public class PollPage {
             return true;
         }
     }
-    @FindBy(xpath = "//input[@id='multi_2']")
+    @FindBy(xpath = "//input[@id='multi_0']")
     public WebElement allowMultipleChangesCheckbox;
     public void clickAllowMultipleChangesCheckbox(){
         allowMultipleChangesCheckbox.click();

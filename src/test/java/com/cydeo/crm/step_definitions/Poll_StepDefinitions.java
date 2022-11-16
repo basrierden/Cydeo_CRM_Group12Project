@@ -79,10 +79,28 @@ public class Poll_StepDefinitions {
 
     @And("user select Allow multiple choice checkbox")
     public void userSelectAllowMultipleChoiceCheckbox() {
-        
+        pollPage.clickAllowMultipleChangesCheckbox();
     }
 
     @Then("user should see selected Allow multiple choice checkbox in the poll")
     public void userShouldSeeSelectedAllowMultipleChoiceCheckboxInThePoll() {
+        pollPage.verifySelectedAllowMultipleChangesCheckbox();
+
+    }
+
+    @Then("user should create a poll")
+    public void userShouldCreateAPoll() {
+    }
+
+    @Then("user should see {string} as an error message after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageAfterClickingTheSentButton(String arg0) {
+    }
+
+    @And("user type {string} as answers")
+    public void userTypeAsAnswers(String arg0) {
+    }
+
+    @Then("user should see {string}.........{string} as an error message after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageAfterClickingTheSentButton(String arg0, String arg1) {
     }
 }

@@ -37,7 +37,7 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
       |Human Resource|
       |Marketing|
   #--------------------------------A.C->4---------------------------------------
-  @wip
+  @wippp
   Scenario Outline: User should be able to provide multiple choice to attendees by selecting the Allow multiple choice checkbox.
     Given user logs in as "<userType>"
     When user adds users by selecting contacts
