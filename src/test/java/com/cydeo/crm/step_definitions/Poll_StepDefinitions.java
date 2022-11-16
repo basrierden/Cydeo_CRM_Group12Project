@@ -117,4 +117,17 @@ public class Poll_StepDefinitions {
     public void userClickPollButton() {
         pollPage.clickPollButton();
     }
+    @Then("user should see {string} as an error message for question after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageForQuestionAfterClickingTheSentButton(String arg0) {
+        pollPage.clickSendButton();
+        pollPage.verifyWarningMessageAboutWithoutQuestion(arg0);}
+
+    @Then("user should see {string} as an error message for an answer after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageForAnAnswerAfterClickingTheSentButton(String arg0) {
+        
+    }
+
+    @Then("user should see {string}.........{string} as an error message for two answer after clicking the sent button")
+    public void userShouldSeeAsAnErrorMessageForTwoAnswerAfterClickingTheSentButton(String arg0, String arg1) {
+    }
 }

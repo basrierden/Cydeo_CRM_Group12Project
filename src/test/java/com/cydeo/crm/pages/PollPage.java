@@ -152,6 +152,14 @@ public class PollPage {
         String actual=warningMessageAboutWithoutContact.getText();
         Assert.assertEquals(expected,actual);
     }
+    @FindBy(xpath = "//span[.='The question text is not specified.']")
+    public WebElement warningMessageAboutWithoutQuestion;
+    public void verifyWarningMessageAboutWithoutQuestion(String string){
+        String expected=string;
+        String actual=warningMessageAboutWithoutQuestion.getText();
+        Assert.assertEquals(expected,actual);
+
+    }
 
 
 
