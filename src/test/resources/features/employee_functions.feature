@@ -1,5 +1,5 @@
 @CRMLYEUG-1476
-Feature:
+Feature: User should be able to use functions on Company Structure under Employee menu.
 
   User story: As a user, I should be able to use functions on Company Structure under Employee menu.
 
@@ -18,8 +18,8 @@ Feature:
 
 
 # AC2. Hr user should be able to add a department from the company structure.
-  @CRMLYEUG-1483
-  Scenario: Hr user adds a department from the company structure.
+ @CRMLYEUG-1483
+ Scenario: Hr user adds a department from the company structure.
     Given the user logs in as a "Human Resource"
     When the user clicks on Employees button on the left menu
     And the user clicks on Add Department button
