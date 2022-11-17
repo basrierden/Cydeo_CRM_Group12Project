@@ -140,13 +140,14 @@ public class Base_Page {
     @FindBy(xpath = "(//div[.='Photo:'])[1]")
     public WebElement uploadedJpegFile;
 
+
     @FindBy(xpath = "(//div[.='Files:'])[1]")
     public WebElement uploadedPDFFile;
 
     @FindBy(xpath = "(//div[.='Files:'])[1]")
     public WebElement uploadedDocXFile;
 
-    @FindBy(xpath = "//img[@id='disk-attach-image-978']")
+    @FindBy(xpath = "//img[@id='disk-attach-image-990']")
     public WebElement uploadImageProof;
 
     @FindBy(xpath = "(//span[.='Insert in text'])[2]")
@@ -174,5 +175,5 @@ public class Base_Page {
     public WebElement renamedFile;
 
 
-    //upload_stepDefinitions locators===>END//
+    //upload_stepDefinitions locators===>END////
 }
