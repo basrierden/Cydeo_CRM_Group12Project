@@ -55,6 +55,18 @@ public class Login_Page {
                 username = ConfigurationReader.getProperty("marketing_username_kenan");
                 password = ConfigurationReader.getProperty("marketing_password_kenan");
                 break;
+            case "Helpdesk_Hasan":
+                username = ConfigurationReader.getProperty("helpdesk_username_hasan");
+                password = ConfigurationReader.getProperty("helpdesk_password_hasan");
+                break;
+            case "Human Resource_Hasan":
+                username = ConfigurationReader.getProperty("hr_username_hasan");
+                password = ConfigurationReader.getProperty("hr_password_hasan");
+                break;
+            case "Marketing_Hasan":
+                username = ConfigurationReader.getProperty("marketing_username_hasan");
+                password = ConfigurationReader.getProperty("marketing_password_hasan");
+                break;
             default:
                 System.out.println("invalid entry");
 

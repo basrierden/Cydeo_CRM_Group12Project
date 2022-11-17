@@ -4,7 +4,6 @@ import com.cydeo.crm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class ActivityStream_Page {
@@ -214,7 +213,7 @@ public class ActivityStream_Page {
     @FindBy(id="video_idPostFormLHE_blogPostForm-source")
     public WebElement videoSourceInput;
 
-    @FindBy(xpath = "//input[@id='undefined']")
+    @FindBy(className = "adm-btn-save")
     public WebElement videoSaveButton;
 
     @FindBy(xpath = "//span[@title='Video']")
@@ -245,7 +244,7 @@ public class ActivityStream_Page {
         }
     }
 
-    @FindBy(xpath = "//span[@class='bx-core-popup-menu-item-text']")
+    @FindBy(xpath = "(//span[@class='bx-core-popup-menu-item-text'])[2]")
     public WebElement removeLinkButton;
 
     //upload_stepDefinitions locators===>START//
@@ -253,5 +252,32 @@ public class ActivityStream_Page {
     public WebElement messageBTN;
 
     //upload_stepDefinitions locators===>END//
+
+    @FindBy(xpath = "//button[@id='blog-submit-button-save']")
+    public WebElement sendMessageButton;
+
+    @FindBy(xpath = "//div[@class='feed-post-text-block-inner-inner']/a")
+    public WebElement attachedLinkOnMessageBody;
+
+    @FindBy(xpath = "//div[@class='blog-post-quote']")
+    public WebElement sentQuotedText;
+
+    @FindBy(xpath = "//div[@class='feed-com-files-cont']/a")
+    public WebElement addedTags;
+
+    @FindBy(xpath = "((//div[@class='feed-post-text-block-inner-inner'])/iframe[1])[1]")
+    public WebElement addedVideo;
+
+    @FindBy(xpath="(//span[@class='feed-post-more-text'])[1]")
+    public WebElement addedMessageMoreButton;
+
+    @FindBy(xpath = "(//span[.='Delete'])[1]")
+    public WebElement addedMessageDeleteButton;
+
+    @FindBy(xpath = "(//span[@class='bx-core-popup-menu-item-text'])[2]")
+    public WebElement deleteVideoButton;
+
+    @FindBy(xpath = "(//span[@class='bx-core-popup-menu-item-text'])[14]")
+    public WebElement secondVideoDeleteButton;
 
 }
