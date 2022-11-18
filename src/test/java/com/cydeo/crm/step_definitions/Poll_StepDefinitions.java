@@ -53,6 +53,7 @@ public class Poll_StepDefinitions {
     }
     @When("user type {string} as a message title")
     public void userTypeAsAMessageTitle(String arg0) {
+        BrowserUtils.sleep(5);
         pollPage.typeContentTitle(arg0);
         BrowserUtils.sleep(5);
     }
@@ -83,15 +84,9 @@ public class Poll_StepDefinitions {
 
     @Then("user should see selected Allow multiple choice checkbox in the poll")
     public void userShouldSeeSelectedAllowMultipleChoiceCheckboxInThePoll() {
+        BrowserUtils.sleep(5);
         pollPage.verifySelectedAllowMultipleChangesCheckbox();
 
-    }
-
-    @Then("user should create a poll")
-    public void userShouldCreateAPoll() {
-        pollPage.clickSendButton();
-        BrowserUtils.sleep(5);
-        pollPage.verifyCreatedPoll();
     }
 
     @Then("user should see {string} as an error message for message title after clicking the sent button")
@@ -102,6 +97,7 @@ public class Poll_StepDefinitions {
 
     @And("user type {string} as answers")
     public void userTypeAsAnswers(String arg0) {
+        pollPage.typingAnswer1(arg0);
     }
 
 
@@ -117,17 +113,25 @@ public class Poll_StepDefinitions {
     public void userClickPollButton() {
         pollPage.clickPollButton();
     }
-    @Then("user should see {string} as an error message for question after clicking the sent button")
+    @Then("user should see {string} as an error message for a question after clicking the sent button")
     public void userShouldSeeAsAnErrorMessageForQuestionAfterClickingTheSentButton(String arg0) {
         pollPage.clickSendButton();
+        BrowserUtils.sleep(5);
         pollPage.verifyWarningMessageAboutWithoutQuestion(arg0);}
 
-    @Then("user should see {string} as an error message for an answer after clicking the sent button")
-    public void userShouldSeeAsAnErrorMessageForAnAnswerAfterClickingTheSentButton(String arg0) {
-        
+    @Then("user should see an error message for two answer after clicking the sent button")
+    public void userShouldSeeAnErrorMessageForTwoAnswerAfterClickingTheSentButton() {
+        pollPage.clickSendButton();
+        BrowserUtils.sleep(5);
+        pollPage.verifywarningMessageAboutWithoutTwoAnswers();
+        BrowserUtils.sleep(5);
     }
 
-    @Then("user should see {string}.........{string} as an error message for two answer after clicking the sent button")
-    public void userShouldSeeAsAnErrorMessageForTwoAnswerAfterClickingTheSentButton(String arg0, String arg1) {
+    @Then("user should create a poll as {string}")
+    public void userShouldCreateAPollAs(String arg0) {
+        pollPage.clickSendButton();
+        BrowserUtils.sleep(5);
+       // pollPage.verifyCreatedPoll();
+        pollPage.verifyQuestion(arg0);
     }
 }
