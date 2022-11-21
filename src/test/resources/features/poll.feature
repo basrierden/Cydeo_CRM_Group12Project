@@ -14,7 +14,7 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
       | Human Resource |
       | Helpdesk       |
   #--------------------------------A.C->2---------------------------------------
-  @smoke @CRMLYEUG-1502 @wippp
+   @CRMLYEUG-1502 @wippp
   Scenario Outline:  User should be able to add questions and multiple answers.
     Given user logs in as "<userType>"
     When user type "First question" as a question
