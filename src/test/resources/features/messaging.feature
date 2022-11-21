@@ -1,10 +1,11 @@
+@CRMLYEUG-1531
 Feature: Adding certain features to messages
   User Story: As a user, I should be able to add link, insert video, mention, quote,
   add tag in message.
 
   User Types: Human Resource, Helpdesk, Marketing
 
-
+  @CRMLYEUG-1521
   Scenario Outline: Add mentions about department employees
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality and writes a message
@@ -16,7 +17,7 @@ Feature: Adding certain features to messages
       | Helpdesk_Hasan       |
       | Marketing_Hasan      |
 
-  @smoke
+  @CRMLYEUG-1522 @smoke
   Scenario Outline: Attaching a link to the text
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality
@@ -30,7 +31,7 @@ Feature: Adding certain features to messages
       | Helpdesk_Hasan       |
       | Marketing_Hasan      |
 
-  @smoke
+  @CRMLYEUG-1523 @smoke
   Scenario Outline: Inserting YouTube videos to the message
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality and writes a message
@@ -44,7 +45,7 @@ Feature: Adding certain features to messages
       | Helpdesk_Hasan       |
       | Marketing_Hasan      |
 
-
+  @CRMLYEUG-1524
   Scenario Outline: Inserting Vimeo videos to the message
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality and writes a message
@@ -58,37 +59,7 @@ Feature: Adding certain features to messages
       | Helpdesk_Hasan       |
       | Marketing_Hasan      |
 
-  @smoke
-  Scenario Outline: Removing YouTube video from the message before sending
-    Given the user logs in as a "<userType>"
-    And the user clicks Message functionality and writes a message
-    And the user clicks "Insert video" button
-    And the user inserts YouTube video
-    And the user removes YouTube video before sending message
-    And the user clicks send message button
-    Then the inserted video is not displayed on the message body
-    Examples:
-      | userType             |
-      | Human Resource_Hasan |
-      | Helpdesk_Hasan       |
-      | Marketing_Hasan      |
-
-
-  Scenario Outline: Removing Vimeo video from the message before sending
-    Given the user logs in as a "<userType>"
-    And the user clicks Message functionality and writes a message
-    And the user clicks "Insert video" button
-    And the user inserts Vimeo video
-    And the user removes Vimeo video before sending message
-    And the user clicks send message button
-    Then the inserted video is not displayed on the message body
-    Examples:
-      | userType             |
-      | Human Resource_Hasan |
-      | Helpdesk_Hasan       |
-      | Marketing_Hasan      |
-
-  @smoke
+  @CRMLYEUG-1525 @smoke
   Scenario Outline: Removing a link from the the message before sending
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality
@@ -103,8 +74,40 @@ Feature: Adding certain features to messages
       | Helpdesk_Hasan       |
       | Marketing_Hasan      |
 
+  @CRMLYEUG-1526 @smoke
+  Scenario Outline: Removing YouTube video from the message before sending
+    Given the user logs in as a "<userType>"
+    And the user clicks Message functionality and writes a message
+    And the user clicks "Insert video" button
+    And the user inserts YouTube video
+    And the user removes YouTube video before sending message
+    And the user clicks send message button
+    Then the inserted video is not displayed on the message body
+    Examples:
+      | userType             |
+      | Human Resource_Hasan |
+      | Helpdesk_Hasan       |
+      | Marketing_Hasan      |
 
-  @smoke
+  @CRMLYEUG-1527
+  Scenario Outline: Removing Vimeo video from the message before sending
+    Given the user logs in as a "<userType>"
+    And the user clicks Message functionality and writes a message
+    And the user clicks "Insert video" button
+    And the user inserts Vimeo video
+    And the user removes Vimeo video before sending message
+    And the user clicks send message button
+    Then the inserted video is not displayed on the message body
+    Examples:
+      | userType             |
+      | Human Resource_Hasan |
+      | Helpdesk_Hasan       |
+      | Marketing_Hasan      |
+
+
+
+
+  @CRMLYEUG-1528 @smoke
   Scenario Outline: Adding quotes to the message
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality
@@ -118,7 +121,7 @@ Feature: Adding certain features to messages
       | Helpdesk_Hasan       |
       | Marketing_Hasan      |
 
-  @smoke
+  @CRMLYEUG-1529 @smoke
   Scenario Outline: Adding tags to  the message
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality and writes a message
@@ -133,7 +136,7 @@ Feature: Adding certain features to messages
       | Marketing_Hasan      |
 
 
-
+  @CRMLYEUG-1530
   Scenario Outline: Removing tags from  the message
     Given the user logs in as a "<userType>"
     And the user clicks Message functionality and writes a message

@@ -48,7 +48,6 @@ public class Messaging_StepDefinitions {
 
         List<String> expectedList=new ArrayList<>(Arrays.asList("Recent", "Employees and departments"));
         List<String> actualList=new ArrayList<>(Arrays.asList());
-
         for (int i = 0; i < activityStream_page.mentionsList.size(); i++) {
             actualList.add(activityStream_page.mentionsList.get(i).getText());
         }
@@ -62,8 +61,10 @@ public class Messaging_StepDefinitions {
     public void the_user_attaches_a_link_to_the_specified_text() {
 
         activityStream_page.linkTextInput.sendKeys(messageText);
+        BrowserUtils.sleep(2);
         String expectedLinkURL= "https://www." + messageText + "/";
         activityStream_page.linkURLInput.sendKeys(expectedLinkURL);
+        BrowserUtils.sleep(2);
         activityStream_page.linkSaveButton.click();
 
     }
@@ -74,7 +75,10 @@ public class Messaging_StepDefinitions {
         String expectedLinkURL= "https://www." + messageText + "/";
         String actualLinkURL= activityStream_page.attachedLinkOnMessageBody.getAttribute("href");
         Assert.assertEquals(expectedLinkURL,actualLinkURL);
-
+        activityStream_page.addedMessageMoreButton.click();
+        activityStream_page.addedMessageDeleteButton.click();
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
     }
 
     @Given("the user inserts YouTube video")
@@ -84,7 +88,6 @@ public class Messaging_StepDefinitions {
         String youTubeEmbedLink= "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/KfTmJ9DMaEw\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
         activityStream_page.videoSourceInput.sendKeys(youTubeEmbedLink + Keys.ENTER);
         BrowserUtils.sleep(5);
-
 
     }
 
@@ -107,7 +110,6 @@ public class Messaging_StepDefinitions {
         Driver.getDriver().switchTo().parentFrame();
         BrowserUtils.sleep(2);
         activityStream_page.deleteVideoButton.click();
-
     }
 
     @Then("the inserted YouTube video is displayed on the message body")
@@ -122,8 +124,6 @@ public class Messaging_StepDefinitions {
         Alert alert = Driver.getDriver().switchTo().alert();
         alert.accept();
 
-
-
     }
 
     @Given("the user inserts Vimeo video")
@@ -134,8 +134,6 @@ public class Messaging_StepDefinitions {
 
         activityStream_page.videoSourceInput.sendKeys(vimeoEmbedLink + Keys.ENTER);
         BrowserUtils.sleep(5);
-
-
 
     }
 
@@ -155,10 +153,6 @@ public class Messaging_StepDefinitions {
 
     }
 
-
-
-
-
     @And ("the user removes link from the message before sending")
     public void the_user_removes_link_from_the_message_before_sending() {
 
@@ -175,6 +169,11 @@ public class Messaging_StepDefinitions {
     public void the_link_is_not_displayed_on_the_message_body() {
 
         activityStream_page.assertWebElementNotPresent(activityStream_page.attachedLinkOnMessageBody);
+
+        activityStream_page.addedMessageMoreButton.click();
+        activityStream_page.addedMessageDeleteButton.click();
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
     }
 
 
@@ -194,12 +193,16 @@ public class Messaging_StepDefinitions {
         String expectedTitleAttribute="Quote";
         String actualTitleAttribute=activityStream_page.sentQuotedText.getAttribute("title");
         Assert.assertEquals(expectedTitleAttribute,actualTitleAttribute);
+
+        activityStream_page.addedMessageMoreButton.click();
+        activityStream_page.addedMessageDeleteButton.click();
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
     }
 
 
     @And("the user add tag and clicks add button")
     public void the_user_add_tag_and_clicks_add_button() {
-
         activityStream_page.addTagInputBox.sendKeys(messageText);
         activityStream_page.tagAddButton.click();
         BrowserUtils.sleep(1);
@@ -211,6 +214,11 @@ public class Messaging_StepDefinitions {
         String expectedText=messageText;
         String actualText=activityStream_page.addedTags.getText();
         Assert.assertEquals(expectedText,actualText);
+
+        activityStream_page.addedMessageMoreButton.click();
+        activityStream_page.addedMessageDeleteButton.click();
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
 
     }
 
@@ -230,6 +238,11 @@ public class Messaging_StepDefinitions {
         } catch (Exception e) {
             System.out.println("Tag is removed from the page. Two tags are different ");
         }
+
+        activityStream_page.addedMessageMoreButton.click();
+        activityStream_page.addedMessageDeleteButton.click();
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
     }
 
 
@@ -246,8 +259,11 @@ public class Messaging_StepDefinitions {
     @Then("the inserted video is not displayed on the message body")
     public void the_inserted_video_is_not_displayed_on_the_message_body() {
 
+        activityStream_page.addedMessageMoreButton.click();
+        activityStream_page.addedMessageDeleteButton.click();
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
         activityStream_page.assertWebElementNotPresent(activityStream_page.addedVideo);
-
     }
 
 }
