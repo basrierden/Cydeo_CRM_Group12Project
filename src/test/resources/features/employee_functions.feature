@@ -1,7 +1,7 @@
 @CRMLYEUG-1476
 Feature: User should be able to use functions on Company Structure under Employee menu.
 
-  User story: As a user, I should be able to use functions on Company Structure under Employee menu.
+  User story: As a user, I should be able to use functions on Company Structure under Employee menu..
 
 
 # AC1. All user types should be able to display company structure.
