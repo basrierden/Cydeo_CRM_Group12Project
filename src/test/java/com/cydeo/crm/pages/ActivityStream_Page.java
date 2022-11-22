@@ -274,10 +274,8 @@ public class ActivityStream_Page {
     @FindBy(xpath = "(//span[.='Delete'])[1]")
     public WebElement addedMessageDeleteButton;
 
-    @FindBy(xpath = "(//span[@class='bx-core-popup-menu-item-text'])[2]")
+    @FindBy(xpath = "//span[.='Delete video']")
     public WebElement deleteVideoButton;
 
-    @FindBy(xpath = "(//span[@class='bx-core-popup-menu-item-text'])[14]")
-    public WebElement secondVideoDeleteButton;
 
 }
