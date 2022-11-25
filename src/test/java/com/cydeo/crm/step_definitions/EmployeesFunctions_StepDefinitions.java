@@ -35,7 +35,6 @@ public class EmployeesFunctions_StepDefinitions {
 
     @When("the user leaves Department name empty")
     public void the_user_leaves_department_name_empty() {
-
     }
 
     @Then("the user sees the error message")
@@ -76,29 +75,22 @@ public class EmployeesFunctions_StepDefinitions {
 
     @When("the user adds a department")
     public void the_user_adds_a_department() {
-//        BrowserUtils.sleep(1);
         employees_page.addButton.click();
-
     }
 
     @Then("the user sees the added department on the company structure")
     public void the_user_sees_the_added_department_on_the_company_structure() {
 
-BrowserUtils.sleep(2);
+        BrowserUtils.sleep(1);
         for (int i = 0; i < 2; i++) {
-            try{
+            try {
                 WebElement DepartmentTitle = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName1"));
                 Assert.assertTrue(DepartmentTitle.isDisplayed());
                 break;
-            }
-            catch(StaleElementReferenceException exp){
+            } catch (StaleElementReferenceException exp) {
                 System.out.println(exp.getMessage());
             }
         }
-
-
-        //delete new department after assertion
-        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
     }
 
 
@@ -111,24 +103,17 @@ BrowserUtils.sleep(2);
 
     @When("the user selects a parent department Cyber Vet from the department dropdown")
     public void the_user_select_a_parent_department_Cyber_Vet_from_the_department_dropdown() {
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(1);
         employees_page.selectParentDepartmentList().selectByValue("129");
     }
 
 
     @Then("the user sees the added department under parent department on the company structure")
     public void the_user_sees_the_added_department_under_parent_department_on_the_company_structure() {
-
         String parentDeptID = employees_page.getDepartmentID(ConfigurationReader.getProperty("newDepartmentName1"));
         String childDeptName = ConfigurationReader.getProperty("newDepartmentName2");
         WebElement childDept = employees_page.getChildDepartmentElement(parentDeptID, childDeptName);
         Assert.assertTrue(childDept.isDisplayed());
-
-        //delete new departments after assertion
-        BrowserUtils.sleep(2);
-        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
-        BrowserUtils.sleep(2);
-        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
     }
 
 
@@ -150,7 +135,7 @@ BrowserUtils.sleep(2);
     @When("the user clicks on Close button")
     public void the_user_clicks_on_close_button() {
         employees_page.closeButton.click();
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(1);
     }
 
     @Then("add department pop-up is closed")
@@ -172,9 +157,8 @@ BrowserUtils.sleep(2);
         employees_page.departmentNameInputBox.sendKeys(ConfigurationReader.getProperty("newDepartmentName2"));
         BrowserUtils.sleep(1);
         employees_page.addButton.click();
-        BrowserUtils.sleep(1);
-    }
 
+    }
 
     @When("the user types child Department name")
     public void the_user_types_child_department_name() {
@@ -186,10 +170,7 @@ BrowserUtils.sleep(2);
     public void the_department_is_edited() {
         WebElement editedDepartmentTitle = employees_page.getDepartmentTitleElement(ConfigurationReader.getProperty("newDepartmentName2"));
         Assert.assertTrue(editedDepartmentTitle.isDisplayed());
-        BrowserUtils.sleep(1);
 
-        //delete new department after assertion
-        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
     }
 
     @When("the user adds child department")
@@ -199,7 +180,7 @@ BrowserUtils.sleep(2);
         employees_page.departmentNameInputBox.sendKeys(ConfigurationReader.getProperty("newDepartmentName2"));
         BrowserUtils.sleep(1);
         the_user_adds_a_department();
-        BrowserUtils.sleep(1);
+
     }
 
     @When("the user deletes the department")
@@ -210,25 +191,9 @@ BrowserUtils.sleep(2);
 
     @Then("the department is deleted")
     public void the_department_is_deleted() {
-
         BrowserUtils.sleep(1);
         boolean departmentPresent = Driver.getDriver().getPageSource().contains(ConfigurationReader.getProperty("newDepartmentName1"));
         Assert.assertFalse(departmentPresent);
-
-        /*
-        for (int i = 0; i < 2; i++) {
-            try{
-                boolean departmentPresent = Driver.getDriver().getPageSource().contains(ConfigurationReader.getProperty("newDepartmentName1"));
-                Assert.assertFalse(departmentPresent);
-                break;
-            }
-            catch(StaleElementReferenceException exp){
-                System.out.println(exp.getMessage());
-            }
-        }
-
-         */
-
     }
 
     @When("the user drag and drop the first department under second department as a subdepartment")
@@ -245,6 +210,22 @@ BrowserUtils.sleep(2);
     public void the_user_cannot_see_add_department_button() {
         boolean departmentPresent = Driver.getDriver().getPageSource().contains("Add department");
         Assert.assertFalse(departmentPresent);
+    }
+
+    @Then("the added department is deleted")
+    public void the_added_department_is_deleted() {
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName1"));
+    }
+
+    @Then("the edited department is deleted")
+    public void the_edited_department_is_deleted() {
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
+    }
+
+
+    @Then("the added child department is deleted")
+    public void the_added_child_department_is_deleted() {
+        employees_page.deleteDepartment(ConfigurationReader.getProperty("newDepartmentName2"));
     }
 
 }
