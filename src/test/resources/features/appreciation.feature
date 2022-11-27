@@ -19,20 +19,20 @@ Feature: As a user, I should be able to send appreciation by clicking on Appreci
     And user clicks the send button
     Then user cannot send an Appreciation and sees the error message
 
-  @CRMLYEUG-1535
+  @CRMLYEUG-1535 @smoke
   Scenario:  The message delivery should be to 'All employees' by default and should be changeable.
    Then the delivery is All employees
     And user select another employees
     Then the employees changed
 
-  @CRMLYEUG-1536
+  @CRMLYEUG-1536 @smoke
   Scenario: User should be able to cancel sending appreciation at any time before sending.
     When user types the message in the message content
     And user adds recipients
     And user clicks the cancel button
     Then sending the appreciation is cancelled before sending
 
-  @CRMLYEUG-1537
+  @CRMLYEUG-1537 @smoke
   Scenario: User should be select an icon.
     When user select an icon
     Then icon is selected
