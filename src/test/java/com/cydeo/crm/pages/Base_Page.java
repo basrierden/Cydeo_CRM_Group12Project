@@ -176,4 +176,65 @@ public class Base_Page {
 
 
     //upload_stepDefinitions locators===>END////
+
+    //Appreciation_stepDefinitions started
+
+    @FindBy(xpath = "//span[@id='feed-add-post-form-link-text']")
+    public WebElement moreButtonInpage;
+
+    @FindBy(xpath = "(//span[@class='menu-popup-item-text'])[2]")
+    public WebElement appreciationButton;
+
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement iframeMessageContent;
+
+    @FindBy(xpath = "//body[@style='min-height: 184px;']")
+    public WebElement messageContent;
+
+
+    @FindBy(xpath = "//a[@id='bx-destination-tag']")
+    public WebElement addMoreRecipients;
+
+    @FindBy(xpath = "(//div[.='admin'])[2]")
+    public WebElement addAdmin;
+
+    @FindBy(xpath = "//span[@class='popup-window-close-icon']")
+    public WebElement closeRecipients;
+
+    @FindBy(xpath = "(//button[@class='ui-btn ui-btn-lg ui-btn-primary'])[1]")
+    public WebElement sendButton;
+
+    @FindBy(xpath = "//div[.='great job']")
+    public WebElement sentAppreciation;
+
+    @FindBy(xpath = "//span[@class='feed-add-post-del-but']")
+    public WebElement allEmployeesDeleteBtn;
+
+    @FindBy(xpath = "//span[@class='feed-add-info-text']")
+    public WebElement errorMessage;
+
+    @FindBy(xpath = "//span[@class='feed-add-post-destination-text']")
+    public WebElement allEmployeesbyDefault;
+
+    @FindBy(xpath = "(//a[@class='feed-add-destination-link'])[1]")
+    public WebElement addPersonOrGroupOrDepart;
+
+    @FindBy(xpath = "//a[@class='bx-finder-box-tab bx-lm-tab-department']")
+    public WebElement employeesAndDepartment;
+
+    @FindBy(xpath = "//div[.='hr2@cybertekschool.com']")
+    public WebElement addAnEmployee;
+
+    @FindBy(xpath = "//button[@id='blog-submit-button-cancel']")
+    public WebElement cancelButton;
+
+    @FindBy(xpath = "(//span[@class='feed-add-grat-box feed-add-grat-medal-thumbsup'])[1]")
+    public WebElement selectAnIconButton;
+
+    @FindBy(xpath = "//span[@class='feed-add-grat-box feed-add-grat-medal-gift']")
+    public WebElement selectMedalGiftIcon;
+
+    //Appreciation_stepDefinitions ENDED
+
+
 }
