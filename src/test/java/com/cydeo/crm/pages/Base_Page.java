@@ -147,7 +147,7 @@ public class Base_Page {
     @FindBy(xpath = "(//div[.='Files:'])[1]")
     public WebElement uploadedDocXFile;
 
-    @FindBy(xpath = "//img[@id='disk-attach-image-990']")
+    @FindBy(xpath = "(//img[contains(@id,'disk-attach-image')])[1]")
     public WebElement uploadImageProof;
 
     @FindBy(xpath = "(//span[.='Insert in text'])[2]")
@@ -168,10 +168,10 @@ public class Base_Page {
     @FindBy(xpath = "//span[@class='files-name-edit-btn']")
     public WebElement fileNameEditBtn;
 
-    @FindBy(xpath = "//input[@value='DOCX Document (38)']")
+    @FindBy(xpath = "//input[contains(@value,'DOCX Document')]")
     public WebElement inputRename;
 
-    @FindBy(xpath = "//a[@title='Renamed fileDOCX Document (38).docx']")
+    @FindBy(xpath = "(//a[contains(@title,'Renamed file')])[1]")
     public WebElement renamedFile;
 
 

@@ -60,7 +60,7 @@ public class upload_stepDefinitions {
     public void user_uploads_pdf_file() {
 
         basePage.chooseFilesForMessage.sendKeys("C:\\Users\\kantoor\\Desktop\\PROJECT FILES\\PDF fORMAT Document.pdf");
-        //BrowserUtils.sleep(10);
+        BrowserUtils.sleep(10);
     }
 
     @When("user uploads docx file")
@@ -73,9 +73,11 @@ public class upload_stepDefinitions {
     public void user_is_able_to_upload_files() {
         //basePage.messageTitleField.sendKeys("Upload Practice");
         basePage.messageSendButton.click();
+        BrowserUtils.sleep(10);
         Assert.assertTrue(basePage.uploadedJpegFile.isDisplayed());
         Assert.assertTrue(basePage.uploadedPDFFile.isDisplayed());
         Assert.assertTrue(basePage.uploadedDocXFile.isDisplayed());
+        BrowserUtils.sleep(10);
 
 
     }
@@ -115,8 +117,10 @@ public class upload_stepDefinitions {
     public void user_sees_in_text_label_on_button() {
 
         String actualText = basePage.msgInTextBtn.getText();
+        BrowserUtils.sleep(10);
         String expectedText = "In text";
         Assert.assertEquals(expectedText, actualText);
+        BrowserUtils.sleep(10);
 
     }
 
@@ -132,6 +136,7 @@ public class upload_stepDefinitions {
         basePage.messageSendButton.click();
         BrowserUtils.sleep(10);
         Assert.assertTrue(basePage.recipientEditBtn.isDisplayed());
+        BrowserUtils.sleep(10);
 
 
     }
