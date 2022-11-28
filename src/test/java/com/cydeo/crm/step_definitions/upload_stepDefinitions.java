@@ -95,6 +95,7 @@ public class upload_stepDefinitions {
         basePage.messageSendButton.click();
         BrowserUtils.sleep(10);
         Assert.assertTrue(basePage.uploadImageProof.isDisplayed());
+        BrowserUtils.sleep(10);
 
     }
 

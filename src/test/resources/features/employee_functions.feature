@@ -1,7 +1,7 @@
 @CRMLYEUG-1476
-Feature:
+Feature: User should be able to use functions on Company Structure under Employee menu.
 
-  User story: As a user, I should be able to use functions on Company Structure under Employee menu.
+  User story: As a user, I should be able to use functions on Company Structure under Employee menu..
 
 
 # AC1. All user types should be able to display company structure.
@@ -26,6 +26,7 @@ Feature:
     And the user types Department name
     And the user adds a department
     Then the user sees the added department on the company structure
+    And the added department is deleted
 
   @CRMLYEUG-1484
   Scenario: Department cannot be added without department name
@@ -50,6 +51,8 @@ Feature:
     And the user selects a parent department from the department dropdown
     And the user adds a department
     Then the user sees the added department under parent department on the company structure
+    And the added child department is deleted
+    And the added department is deleted
 
 
 # AC4. Hr user should be able to select a supervisor from "recent", "company" and "search"
@@ -62,6 +65,7 @@ Feature:
     And the user selects supervisor from recent
     And the user adds a department
     Then the user sees the added department on the company structure
+    And the added department is deleted
 
   @CRMLYEUG-1487
   Scenario: Hr user selects a supervisor from "company" when adding a department.
@@ -72,6 +76,7 @@ Feature:
     And the user selects supervisor from company
     And the user adds a department
     Then the user sees the added department on the company structure
+    And the added department is deleted
 
   @CRMLYEUG-1488
   Scenario: Hr user selects a supervisor from "search" when adding a department.
@@ -79,9 +84,10 @@ Feature:
     When the user clicks on Employees button on the left menu
     And the user clicks on Add Department button
     And the user types Department name
-    And the user searches and selects supervisor "Kara Murat" from search
+    And the user searches and selects supervisor "Arben Istrefi" from search
     And the user adds a department
     Then the user sees the added department on the company structure
+    And the added department is deleted
 
 
 #AC5. Hr user should be able to close add department pop-up at any time before sending
@@ -138,7 +144,7 @@ Feature:
     When the user clicks on Employees button on the left menu
     And the user clicks on Add Department button
     And the user types Department name
-    And the user searches and selects supervisor "Kara Murat" from search
+    And the user searches and selects supervisor "Arben Istrefi" from search
     And the user clicks on Close button
     Then add department pop-up is closed
 
@@ -153,6 +159,7 @@ Feature:
     And the user adds a department
     And the user edits the department
     Then the department is edited
+    And the edited department is deleted
 
   @CRMLYEUG-1496
   Scenario: Hr user can add child departments after adding the department.
@@ -163,6 +170,9 @@ Feature:
     And the user adds a department
     And the user adds child department
     Then the user sees the added department under parent department on the company structure
+    And the added child department is deleted
+    And the added department is deleted
+
 
   @CRMLYEUG-1497
   Scenario: Hr user can delete departments after adding the department.
@@ -188,6 +198,8 @@ Feature:
     And the user adds a department
     And the user drag and drop the first department under second department as a subdepartment
     Then the user sees the added department under parent department on the company structure
+    And the added child department is deleted
+    And the added department is deleted
 
 
 #AC8. Helpdesk and marketing users can not change company structure.

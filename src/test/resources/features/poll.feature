@@ -1,9 +1,9 @@
-@CRMLYEUG-1478
+@CRMLYEUG-1510
 Feature: I should be able to create a poll by clicking on Poll tab under Active Stream.
   User Story:US07_As a user, I should be able to create a poll by clicking on Poll tab under Active Stream.
 
   #--------------------------------A.C->1---------------------------------------
-  @smoke
+  @smoke @CRMLYEUG-1501 @wippp
   Scenario Outline: User should be able to add users by selecting multiple contacts from Employees and Department's contact lists.
     Given user logs in as "<userType>"
     When user adds users by selecting contacts
@@ -14,11 +14,12 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
       | Human Resource |
       | Helpdesk       |
   #--------------------------------A.C->2---------------------------------------
+   @CRMLYEUG-1502 @wippp
   Scenario Outline:  User should be able to add questions and multiple answers.
     Given user logs in as "<userType>"
     When user type "First question" as a question
     And user type "First answer" and "Second answer" as answers
-    When user type "First message title" as a message title
+    When user type "First message title(D)" as a message title
     Then user should see the question "First question" and answers "First answer" and "Second answer" in the poll page
     Examples:
       |userType|
@@ -26,6 +27,7 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
       |Human Resource|
       |Marketing|
   #--------------------------------A.C->3---------------------------------------
+  @CRMLYEUG-1503 @wippp
   Scenario Outline: User should be able to delete questions and multiple answers.
     Given user logs in as "<userType>"
     When user type "Second question" as a question
@@ -37,10 +39,10 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
       |Human Resource|
       |Marketing|
   #--------------------------------A.C->4---------------------------------------
-  @wip
+  @CRMLYEUG-1504 @wippp
   Scenario Outline: User should be able to provide multiple choice to attendees by selecting the Allow multiple choice checkbox.
     Given user logs in as "<userType>"
-    When user adds users by selecting contacts
+    #When user adds users by selecting contacts
     And user type "First question" as a question
     And user type "First answer" and "Second answer" as answers
     And user type "First message title" as a message title
@@ -54,70 +56,62 @@ Feature: I should be able to create a poll by clicking on Poll tab under Active 
       |Marketing|
 
   #--------------------------------A.C->5---------------------------------------
+  @CRMLYEUG-1505 @wippp
   Scenario Outline: User should be able to create a poll with mandatory fields.
     Given user logs in as "<userType>"
-    When user adds users by selecting contacts
-    And user type "First question" as a question
+    When user type "First question" as a question
     And user type "First answer" and "Second answer" as answers
     And user type "First message title" as a message title
-    Then user should create a poll
+    Then user should create a poll as "First question"
+    Examples:
+      |userType|
+      |Helpdesk|
+      |Human Resource|
+      |Marketing|
+  @CRMLYEUG-1506 @wippp
+  Scenario Outline: User should be able to see an error message without a message title after clicking the sent button
+    Given user logs in as "<userType>"
+    When user type "First question" as a question
+    And user type "First answer" and "Second answer" as answers
+    Then user should see "The message title is not specified" as an error message for message title after clicking the sent button
+    Examples:
+      |userType|
+      |Helpdesk|
+      |Human Resource|
+      |Marketing|
+  @CRMLYEUG-1507 @wippp
+  Scenario Outline: User should be able to see an error message without contacts after clicking the sent button
+    Given user logs in as "<userType>"
+    When user click poll button
+    And user type "Third message title(B)" as a message title
+    And user type "First question" as a question
+    And user type "First answer" and "Second answer" as answers
+    Then user should see "Please specify at least one person." as an error message for contacts after clicking the sent button
+    Examples:
+      |userType|
+      |Helpdesk|
+      |Human Resource|
+      |Marketing|
+  @CRMLYEUG-1508 @wippp
+  Scenario Outline: User should be able to see an error message without a question text after clicking the sent button
+    Given user logs in as "<userType>"
+    When user click poll button
+    And user type "Fourth message title(A)" as a message title
+    And user type "First answer" and "Second answer" as answers
+    Then user should see "The question text is not specified." as an error message for a question after clicking the sent button
     Examples:
       |userType|
       |Helpdesk|
       |Human Resource|
       |Marketing|
 
-  Scenario Outline: User should be able to see an error message without a message title after clicking the sent button
-    Given user logs in as "<userType>"
-    When user adds users by selecting contacts
-    And user type "First question" as a question
-    And user type "First answer" and "Second answer" as answers
-    Then user should see "The message title is not specified" as an error message after clicking the sent button
-    Examples:
-      |userType|
-      |Helpdesk|
-      |Human Resource|
-      |Marketing|
-  Scenario Outline: User should be able to see an error message without contacts after clicking the sent button
-    Given user logs in as "<userType>"
-    When user type "First message title" as a message title
-    And user type "First question" as a question
-    And user type "First answer" and "Second answer" as answers
-    Then user should see "Please specify at least one person." as an error message after clicking the sent button
-    Examples:
-      |userType|
-      |Helpdesk|
-      |Human Resource|
-      |Marketing|
-  Scenario Outline: User should be able to see an error message without a question text after clicking the sent button
-    Given user logs in as "<userType>"
-    When user type "First message title" as a message title
-    And user adds users by selecting contacts
-    And user type "First answer" and "Second answer" as answers
-    Then user should see "The question text is not specified." as an error message after clicking the sent button
-    Examples:
-      |userType|
-      |Helpdesk|
-      |Human Resource|
-      |Marketing|
-  Scenario Outline: User should be able to see an error message without an answer after clicking the sent button
-    Given user logs in as "<userType>"
-    When user type "First message title" as a message title
-    And user adds users by selecting contacts
-    And user type "First question" as a question
-    And user type "First answer" as answers
-    Then user should see "Please specify at least two answers." as an error message after clicking the sent button
-    Examples:
-      |userType|
-      |Helpdesk|
-      |Human Resource|
-      |Marketing|
+  @wippp @CRMLYEUG-1509
   Scenario Outline: User should be able to see an error message without two answer after clicking the sent button
     Given user logs in as "<userType>"
-    When user type "First message title" as a message title
-    And user adds users by selecting contacts
-    And user type "First question" as a question
-   Then user should see "The question "........." has no answers." as an error message after clicking the sent button
+    And user type "Third question" as a question
+    When user type "Fifth message title(A)" as a message title
+    #And user adds users by selecting contacts
+    Then user should see an error message for two answer after clicking the sent button
     Examples:
       |userType|
       |Helpdesk|

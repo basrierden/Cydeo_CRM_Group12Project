@@ -20,7 +20,6 @@ import org.junit.runner.RunWith;
         tags = "",
         publish = false
 
-
 )
 
 public class CukesRunner {
