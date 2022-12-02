@@ -42,6 +42,12 @@ public class ActivityStream_Page {
     @FindBy(css = "button#blog-submit-button-save")
     public WebElement sendEventBtn;
 
+    @FindBy(xpath = "//button[@id='blog-submit-button-cancel']")
+    public WebElement cancelEventBtn;
+
+    @FindBy(xpath = "//span[.='Send message …']")
+    public WebElement sendMessageTitle;
+
     @FindBy(xpath = "//a[.='DamirEvent']")
     public WebElement eventProof;
 

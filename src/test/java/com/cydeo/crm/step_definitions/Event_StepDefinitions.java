@@ -112,8 +112,9 @@ public class Event_StepDefinitions {
         activityStreamPage.upcomingEvents.click();
         BrowserUtils.sleep(5);
     }
-    @Then("user is able to see Remainder label")
-    public void user_is_able_to_see_remainder_label() {
+    @Then("user is able to see Reminder label")
+    public void user_is_able_to_see_reminder_label() {
+        BrowserUtils.sleep(2);
         Assert.assertTrue(activityStreamPage.reminderLabelProof.isDisplayed());
     }
 
@@ -164,8 +165,8 @@ public class Event_StepDefinitions {
         Assert.assertTrue(activityStreamPage.attendeeProof.isDisplayed());
     }
 
-    @When("user adds eahdgfelr department as attendee and send meeting invitation")
-    public void user_adds_eahdgfelr_department_as_attendee_and_send_meeting_invitation() {
+    @When("user adds department as attendee and send meeting invitation")
+    public void user_adds_department_as_attendee_and_send_meeting_invitation() {
         activityStreamPage.employeesAndDepartments.click();
         activityStreamPage.eahdgfelrDepartment.click();
         activityStreamPage.allDepartmentCheck.click();
@@ -173,6 +174,7 @@ public class Event_StepDefinitions {
     }
     @Then("user should see attendee proof")
     public void user_should_see_attendee_proof() {
+        BrowserUtils.sleep(2);
         Assert.assertTrue(activityStreamPage.attendeeProof.isDisplayed());
     }
     @When("user send event invitation named DamirEvent")
@@ -198,6 +200,17 @@ public class Event_StepDefinitions {
     public void event_should_not_be_able_to_create_event() {
         BrowserUtils.sleep(3);
         Assert.assertFalse(activityStreamPage.eventNoNameProof.isDisplayed());
+    }
+
+    @When("user clicks on cancel event button")
+    public void user_clicks_on_cancel_event_button() {
+        BrowserUtils.sleep(2);
+        activityStreamPage.cancelEventBtn.click();
+    }
+    @Then("user should see Send Message label")
+    public void user_should_see_send_message_label() {
+        BrowserUtils.sleep(1);
+        Assert.assertTrue(activityStreamPage.sendMessageTitle.isDisplayed());
     }
 
 
