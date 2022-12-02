@@ -56,7 +56,7 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-  @CRMLYEUG-1545 @wip @bug
+  @CRMLYEUG-1545
   Scenario Outline: User should be able to add departments.
     Given the user logs in as a "<userType>"
     When user clicks on Event button

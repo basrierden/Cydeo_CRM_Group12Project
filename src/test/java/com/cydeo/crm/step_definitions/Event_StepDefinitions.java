@@ -174,6 +174,7 @@ public class Event_StepDefinitions {
     }
     @Then("user should see attendee proof")
     public void user_should_see_attendee_proof() {
+        BrowserUtils.sleep(2);
         Assert.assertTrue(activityStreamPage.attendeeProof.isDisplayed());
     }
     @When("user send event invitation named DamirEvent")
