@@ -1,9 +1,9 @@
-@regression
+@CRMLYEUG-1549 @regression
 Feature: As a user, I should be able to create events by clicking on Event tab under Activity Stream.
   User Story: CRMLYEUG-1481
   User types: Human Resource, Helpdesk, Marketing
 
-
+  @CRMLYEUG-1541
   Scenario Outline: User should be able to add Event start and ending date and time, select "All day" and specify the time zone.
     Given the user logs in as a "<userType>"
     When user clicks on Event button
@@ -20,12 +20,13 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
+  @CRMLYEUG-1542
   Scenario Outline: User should be able to set reminder.
     Given the user logs in as a "<userType>"
     When user clicks on Event button
     And user set reminder and send Event
     And user clicks on Upcoming Events
-    Then user is able to see Remainder label
+    Then user is able to see Reminder label
 
     Examples:
       | userType       |
@@ -33,6 +34,7 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
+  @CRMLYEUG-1543
   Scenario: User should be able to select the event location from the dropdown.
     Given the user logs in as a "hr23@cybertekschool.com" and password "UserUser"
     When user clicks on Event button
@@ -40,6 +42,7 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
     And user select location for event
     Then user should see selected location
 
+  @CRMLYEUG-1544
   Scenario Outline: User should be able to add individual members.
     Given the user logs in as a "<userType>"
     When user clicks on Event button
@@ -53,12 +56,12 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-  @bug
+  @CRMLYEUG-1545 @wip @bug
   Scenario Outline: User should be able to add departments.
     Given the user logs in as a "<userType>"
     When user clicks on Event button
     And user click on members field
-    And user adds eahdgfelr department as attendee and send meeting invitation
+    And user adds department as attendee and send meeting invitation
     Then user should see attendee proof
 
     Examples:
@@ -67,7 +70,7 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-  @smoke
+  @CRMLYEUG-1546 @smoke
   Scenario Outline: User should be able to send event by filling the mandatory fields.
     Given the user logs in as a "<userType>"
     When user clicks on Event button
@@ -80,7 +83,7 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
-  @bug
+  @CRMLYEUG-1547 @bug
   Scenario Outline: User should NOT be able to send event without event name.
     Given the user logs in as a "<userType>"
     When user clicks on Event button without giving event name.
@@ -93,6 +96,7 @@ Feature: As a user, I should be able to create events by clicking on Event tab u
       | Helpdesk       |
       | Marketing      |
 
+  @CRMLYEUG-1548
   Scenario Outline: User should be able to cancel sending event at any time before sending.
     Given the user logs in as a "<userType>"
     When user clicks on Event button

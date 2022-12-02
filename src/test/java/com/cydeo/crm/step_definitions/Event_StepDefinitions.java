@@ -112,8 +112,9 @@ public class Event_StepDefinitions {
         activityStreamPage.upcomingEvents.click();
         BrowserUtils.sleep(5);
     }
-    @Then("user is able to see Remainder label")
-    public void user_is_able_to_see_remainder_label() {
+    @Then("user is able to see Reminder label")
+    public void user_is_able_to_see_reminder_label() {
+        BrowserUtils.sleep(2);
         Assert.assertTrue(activityStreamPage.reminderLabelProof.isDisplayed());
     }
 
@@ -164,8 +165,8 @@ public class Event_StepDefinitions {
         Assert.assertTrue(activityStreamPage.attendeeProof.isDisplayed());
     }
 
-    @When("user adds eahdgfelr department as attendee and send meeting invitation")
-    public void user_adds_eahdgfelr_department_as_attendee_and_send_meeting_invitation() {
+    @When("user adds department as attendee and send meeting invitation")
+    public void user_adds_department_as_attendee_and_send_meeting_invitation() {
         activityStreamPage.employeesAndDepartments.click();
         activityStreamPage.eahdgfelrDepartment.click();
         activityStreamPage.allDepartmentCheck.click();
